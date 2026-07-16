@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Camera Motion, Movement &amp; Direction Annotation Guideline</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'Milling';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://d2n8i6crd2t3p1.cloudfront.net/font/milling/205TF-Milling-Duplex1mm.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Milling';
+  font-style: normal;
+  font-weight: 700;
+  src: url('https://d2n8i6crd2t3p1.cloudfront.net/font/milling/205TF-Milling-Triplex1mm.woff2') format('woff2');
+}
+*, *::before, *::after { box-sizing: border-box; }
+h1, h2, h3, h4, h5, h6, p, ul, ol, li, figure, blockquote, hr { margin: 0; padding: 0; }
+table, td, th { margin: 0; padding: 0; border-collapse: collapse; }
+img { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+
+body {
+  font-family: 'Milling', 'Noto Sans', Helvetica, Arial, sans-serif;
+  background: #F4F3F3;
+  color: #1D1C1B;
+  margin: 0;
+  padding: 48px 24px;
+}
+
+.page { max-width: 860px; margin: 0 auto; }
+
+/* Cover */
+.cover {
+  background: #1D1C1B;
+  border-radius: 24px;
+  padding: 56px 48px 48px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.cover-gradient {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #60E21B 0%, #FABA17 32.5%, #FFB592 69%, #FFB0CD 100%);
+}
+.cover-meta {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #60E21B;
+  margin-bottom: 24px;
+}
+.cover h1 {
+  font-size: 44px;
+  font-weight: 400;
+  color: #F4F3F3;
+  letter-spacing: -0.01em;
+  line-height: 1.12;
+  margin-bottom: 16px;
+}
+.cover p {
+  font-size: 16px;
+  color: #9B9895;
+  line-height: 1.6;
+  max-width: 560px;
+}
+.cover-logo { color: #F4F3F3; margin-bottom: 40px; }
+
+/* Section label */
+.section-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #8F8984;
+  margin: 48px 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed #D3D1CF;
+}
+
+/* Tag header */
+.tag-header {
+  background: #ECECEC;
+  border-radius: 16px;
+  padding: 24px 32px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.tag-number {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: #BFF3A4;
+  color: #1D1C1B;
+  padding: 5px 14px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.tag-header h2 { font-size: 22px; font-weight: 400; }
+.tag-header p { font-size: 14px; color: #8F8984; margin-top: 2px; }
+
+/* Shot / motion card */
+.shot-card {
+  background: #ECECEC;
+  border-radius: 24px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.shot-card-inner {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  min-height: 170px;
+}
+.shot-image {
+  position: relative;
+  overflow: hidden;
+  background: #1D1C1B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.shot-content {
+  padding: 26px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.shot-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+.shot-code {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: none;
+  background: #1D1C1B;
+  color: #F4F3F3;
+  padding: 5px 14px;
+  border-radius: 999px;
+  white-space: nowrap;
+  margin-top: 3px;
+}
+.shot-title { font-size: 22px; font-weight: 400; line-height: 1.1; }
+.shot-subtitle { font-size: 13px; color: #8F8984; margin-top: 2px; }
+.shot-desc { font-size: 15px; line-height: 1.6; color: #1D1C1B; margin-bottom: 14px; }
+.shot-bullets { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.shot-bullets li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: #45423F;
+}
+.shot-bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #60E21B;
+}
+.shot-rule {
+  margin-top: 18px;
+  padding: 14px 18px;
+  background: #F4F3F3;
+  border-radius: 12px;
+  border-left: 3px solid #60E21B;
+}
+.shot-rule-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #60E21B;
+  margin-bottom: 4px;
+}
+.shot-rule p { font-size: 13px; line-height: 1.5; color: #1D1C1B; }
+
+/* Direction card (compact, no image column) */
+.dir-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+.dir-card {
+  background: #ECECEC;
+  border-radius: 20px;
+  padding: 22px 24px;
+}
+.dir-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.dir-title { font-size: 18px; font-weight: 400; }
+.dir-desc { font-size: 13.5px; line-height: 1.55; color: #45423F; }
+
+/* Process / step card */
+.step-card {
+  background: #ECECEC;
+  border-radius: 20px;
+  padding: 24px 28px;
+  margin-bottom: 12px;
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 20px;
+  align-items: flex-start;
+}
+.step-number {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: #1D1C1B;
+  color: #F4F3F3;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 15px;
+  display: flex; align-items: center; justify-content: center;
+}
+.step-title { font-size: 17px; font-weight: 400; margin-bottom: 6px; }
+.step-desc { font-size: 14px; line-height: 1.65; color: #45423F; }
+.step-desc strong { color: #1D1C1B; }
+
+/* Callout */
+.callout {
+  padding: 16px 20px;
+  background: #F4F3F3;
+  border-radius: 12px;
+  border-left: 3px solid #FABA17;
+  margin-top: 14px;
+}
+.callout-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #7D5D0C;
+  margin-bottom: 4px;
+}
+.callout p { font-size: 13.5px; line-height: 1.55; }
+.callout-danger { border-left-color: #E0503C; }
+.callout-danger .callout-label { color: #B23A2A; }
+
+/* Comparison table */
+.comparison-table { background: #ECECEC; border-radius: 24px; overflow: hidden; margin-bottom: 12px; }
+.comparison-table table { width: 100%; }
+.comparison-table th {
+  background: #1D1C1B; color: #F4F3F3;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+  padding: 14px 18px; text-align: left; font-weight: 400;
+}
+.comparison-table td { padding: 13px 18px; font-size: 13.5px; border-bottom: 1px dashed #D3D1CF; vertical-align: top; }
+.comparison-table tr:last-child td { border-bottom: none; }
+.comparison-table tr:nth-child(even) td { background: #F4F3F3; }
+.code-pill {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px; letter-spacing: 1px;
+  background: #1D1C1B; color: #F4F3F3;
+  padding: 3px 10px; border-radius: 999px; display: inline-block;
+}
+.code-pill-alt { background: #45423F; }
+
+/* Footer */
+.footer {
+  margin-top: 48px; padding-top: 24px;
+  border-top: 1px dashed #D3D1CF;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-left { font-size: 13px; color: #8F8984; }
+.footer-right {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px; color: #8F8984; letter-spacing: 1px;
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- shared SVG symbols -->
+  <svg width="0" height="0" style="position:absolute">
+    <defs>
+      <symbol id="cam" viewBox="0 0 200 140">
+        <rect x="66" y="52" width="52" height="38" rx="5" fill="#F4F3F3"/>
+        <polygon points="118,64 142,52 142,90 118,78" fill="#F4F3F3"/>
+        <circle cx="82" cy="71" r="9" fill="#1D1C1B"/>
+        <circle cx="82" cy="71" r="4" fill="#F4F3F3"/>
+      </symbol>
+      <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+        <path d="M0,0 L8,4 L0,8 Z" fill="#60E21B"/>
+      </marker>
+      <marker id="arrowhead-y" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+        <path d="M0,0 L8,4 L0,8 Z" fill="#FABA17"/>
+      </marker>
+    </defs>
+  </svg>
+
+  <!-- COVER -->
+  <div class="cover">
+    <div class="cover-logo" style="display:flex;align-items:center;gap:12px;">
+      <svg viewBox="0 0 51 36" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:38px;height:auto;">
+        <g>
+          <rect x="10.78" y="12.36" width="15.81" height="2.14" rx="0.63" fill="currentColor"/>
+          <rect x="0.00" y="12.36" width="8.66" height="2.14" rx="0.63" fill="currentColor"/>
+          <rect x="30.51" y="12.36" width="9.89" height="2.14" rx="0.63" fill="currentColor"/>
+          <rect x="31.93" y="9.28" width="8.47" height="2.15" rx="0.63" fill="currentColor"/>
+          <rect x="41.51" y="9.28" width="6.73" height="2.15" rx="0.63" fill="currentColor"/>
+          <rect x="38.65" y="6.14" width="7.66" height="2.15" rx="0.63" fill="currentColor"/>
+          <rect x="41.08" y="3.07" width="2.24" height="2.15" rx="0.63" fill="currentColor"/>
+          <rect x="18.26" y="27.71" width="3.90" height="2.15" rx="0.63" fill="currentColor"/>
+          <rect x="25.02" y="27.71" width="2.56" height="2.15" rx="0.63" fill="currentColor"/>
+          <rect x="28.74" y="27.71" width="6.88" height="2.15" rx="0.63" fill="currentColor"/>
+          <rect x="32.20" y="24.64" width="2.87" height="2.14" rx="0.63" fill="currentColor"/>
+          <rect x="12.88" y="27.71" width="2.24" height="2.15" rx="0.63" fill="currentColor"/>
+          <rect x="23.29" y="30.78" width="2.24" height="2.15" rx="0.63" fill="currentColor"/>
+          <rect x="21.09" y="33.86" width="2.15" height="2.14" rx="0.63" fill="currentColor"/>
+          <rect x="29.58" y="0.00" width="2.80" height="2.15" rx="0.63" fill="currentColor"/>
+          <rect x="13.71" y="9.28" width="7.14" height="2.15" rx="0.63" fill="currentColor"/>
+          <rect x="26.96" y="3.07" width="4.32" height="2.15" rx="0.63" fill="currentColor"/>
+          <rect x="24.29" y="6.14" width="6.99" height="2.15" rx="0.63" fill="currentColor"/>
+          <rect x="46.04" y="12.36" width="4.08" height="2.14" rx="0.63" fill="currentColor"/>
+          <rect x="7.52" y="15.43" width="20.15" height="2.15" rx="0.63" fill="currentColor"/>
+          <rect x="25.83" y="21.57" width="7.87" height="2.15" rx="0.63" fill="currentColor"/>
+          <rect x="10.78" y="18.50" width="25.62" height="2.15" rx="0.63" fill="currentColor"/>
+          <rect x="6.85" y="21.57" width="9.52" height="2.15" rx="0.63" fill="currentColor"/>
+          <rect x="15.56" y="24.64" width="3.11" height="2.14" rx="0.63" fill="currentColor"/>
+          <rect x="26.58" y="24.64" width="3.38" height="2.14" rx="0.63" fill="currentColor"/>
+          <rect x="9.79" y="24.64" width="3.17" height="2.14" rx="0.63" fill="currentColor"/>
+          <rect x="30.51" y="15.43" width="8.14" height="2.15" rx="0.63" fill="currentColor"/>
+          <rect x="32.40" y="6.12" width="2.24" height="2.15" rx="0.63" fill="currentColor"/>
+        </g>
+      </svg>
+      <span style="font-family:'IBM Plex Mono', monospace; font-size:16px; letter-spacing:1px;">TwelveLabs</span>
+    </div>
+    <div class="cover-meta">Annotation Guideline &middot; Camera Motion &amp; Direction</div>
+    <h1>Camera Motion,<br>Movement &amp; Direction</h1>
+    <p>Reference guide for segmenting video into camera-motion timestamps and tagging each segment with a <code>camera_motion</code> and <code>camera_direction</code> label.</p>
+    <div class="cover-gradient"></div>
+  </div>
+
+  <!-- =========================================================== -->
+  <!-- PART 1: TIMESTAMP SEGMENTATION -->
+  <!-- =========================================================== -->
+  <div class="section-label">Part 1 &mdash; Creating the Timestamps</div>
+
+  <div class="tag-header">
+    <div>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;">
+        <span class="tag-number">Step 0</span>
+        <h2>What a "segment" is</h2>
+      </div>
+      <p>Before tagging <code>camera_motion</code> or <code>camera_direction</code>, you must first cut the video into segments purely based on <strong>camera motion</strong>. This is a separate, prior task from labeling shot type, content, or subject &mdash; ignore everything except how the camera itself is moving.</p>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-number">1</div>
+    <div>
+      <div class="step-title">Watch the full clip once at normal speed</div>
+      <div class="step-desc">Before making any cuts, play the video through one time without pausing. This gives you a rough map of where the camera changes behavior (e.g. "it pans, then holds still, then zooms in"). Do not create timestamps on this first pass &mdash; just build a mental outline.</div>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-number">2</div>
+    <div>
+      <div class="step-title">Re-watch frame-by-frame around every suspected change</div>
+      <div class="step-desc">Step through the video <strong>frame by frame</strong> (not just scrubbing) near each point where you think the camera's behavior changes. Camera motion changes are often only a few frames long &mdash; scrubbing at normal or fast speed will cause you to miss the exact frame the change starts or ends on.</div>
+      <div class="callout">
+        <div class="callout-label">Why this matters</div>
+        <p>Your timestamp boundaries must land on the <strong>exact frame</strong> where the motion or direction changes &mdash; not the frame before, not the frame after. A boundary that is off by even 2&ndash;3 frames is considered incorrect.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-number">3</div>
+    <div>
+      <div class="step-title">Start a new segment whenever motion OR direction changes</div>
+      <div class="step-desc">A single continuous segment must have <strong>one consistent <code>camera_motion</code> value and one consistent <code>camera_direction</code> value</strong> from its start frame to its end frame. The moment either value would change, close the current segment and open a new one &mdash; even if the change seems minor.</div>
+      <ul class="shot-bullets" style="margin-top:10px;">
+        <li>Motion changes (e.g. <code>pan</code> &rarr; <code>static</code>): new segment.</li>
+        <li>Direction changes with the same motion type (e.g. <code>truck_left</code> &rarr; <code>truck_right</code>): new segment.</li>
+        <li>Motion and direction both change at once (e.g. <code>dolly_in</code>/<code>push</code> &rarr; <code>truck_left</code>/<code>left</code>): new segment.</li>
+        <li>A hold between two moves is its own <code>static</code> segment only if it lasts <strong>0.5 seconds or longer</strong>. If the hold is shorter than 0.5 seconds (e.g. a 3&ndash;5 frame pause), it is not perceptible on its own &mdash; do not create a separate <code>static</code> segment for it. Instead, treat it as one direct transition between the two moves (e.g. a left move cutting straight into a right move) and place the single segment boundary at the frame where the direction visibly changes.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- =========================================================== -->
+  <!-- PART 2: CAMERA MOTION TAGGING -->
+  <!-- =========================================================== -->
+  <div class="section-label">Part 2 &mdash; Tagging Each Segment: camera_motion</div>
+
+  <div class="tag-header">
+    <div>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;">
+        <span class="tag-number">Tag 1</span>
+        <h2>camera_motion</h2>
+      </div>
+      <p>Describes <strong>how</strong> the camera is moving (or not moving) during the segment: which physical or mechanical action produces the motion. Choose exactly one value per segment.</p>
+    </div>
+  </div>
+
+  <!-- static -->
+  <div class="shot-card">
+    <div class="shot-card-inner">
+      <div class="shot-image">
+        <svg viewBox="0 0 200 140" width="100%" height="100%">
+          <use href="#cam" x="0" y="0" width="200" height="140"/>
+          <circle cx="92" cy="118" r="3" fill="#8F8984"/>
+        </svg>
+      </div>
+      <div class="shot-content">
+        <div>
+          <div class="shot-header">
+            <span class="shot-code">static</span>
+            <div>
+              <div class="shot-title">Static</div>
+              <div class="shot-subtitle">No camera movement</div>
+            </div>
+          </div>
+          <p class="shot-desc">The camera is fixed on a support &mdash; a tripod, mounted rig, or any locked-off mount &mdash; and does not move or rotate at all. Anything moving in the frame is the subject, not the camera.</p>
+          <ul class="shot-bullets">
+            <li>Locked-off tripod shots, fixed security-style cameras</li>
+            <li>Frame composition does not shift, rotate, or change scale</li>
+            <li>Any shot where the camera is held in the operator's hands (even if they are trying to hold it very still) is <code>handheld</code>, not <code>static</code> &mdash; a mounted support is required for <code>static</code>, see below</li>
+          </ul>
+        </div>
+        <div class="shot-rule">
+          <div class="shot-rule-label">Rule</div>
+          <p>Tag <code>static</code> only if the camera is on a fixed mount/support and its position, angle, and scale are identical from the first frame to the last frame of the segment. If the camera is held in hands rather than mounted, tag <code>handheld</code> instead, even if it looks steady.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- pan -->
+  <div class="shot-card">
+    <div class="shot-card-inner">
+      <div class="shot-image">
+        <svg viewBox="0 0 200 140" width="100%" height="100%">
+          <use href="#cam" x="0" y="0" width="200" height="140"/>
+          <path d="M40,35 A60,60 0 0,1 160,35" fill="none" stroke="#60E21B" stroke-width="3" marker-end="url(#arrowhead)"/>
+        </svg>
+      </div>
+      <div class="shot-content">
+        <div>
+          <div class="shot-header">
+            <span class="shot-code">pan</span>
+            <div>
+              <div class="shot-title">Pan</div>
+              <div class="shot-subtitle">Horizontal rotation on a fixed axis</div>
+            </div>
+          </div>
+          <p class="shot-desc">The camera body stays in one fixed position but rotates left or right around its own vertical axis, like a head turning. The lens sweeps across the scene horizontally.</p>
+          <ul class="shot-bullets">
+            <li>Camera position does not translate through space, only rotates</li>
+            <li>Used to follow horizontal action or reveal a wider environment</li>
+            <li>Speed is smooth and controlled &mdash; a very fast sweeping pan used as a transition is <code>whip_pan</code> instead</li>
+          </ul>
+        </div>
+        <div class="shot-rule">
+          <div class="shot-rule-label">Rule</div>
+          <p>If the camera rotates horizontally in place (no translation) at a normal, controlled speed, tag <code>pan</code>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- tilt -->
+  <div class="shot-card">
+    <div class="shot-card-inner">
+      <div class="shot-image">
+        <svg viewBox="0 0 200 140" width="100%" height="100%">
+          <use href="#cam" x="0" y="0" width="200" height="140"/>
+          <path d="M155,30 A60,60 0 0,1 155,110" fill="none" stroke="#60E21B" stroke-width="3" marker-end="url(#arrowhead)"/>
+        </svg>
+      </div>
+      <div class="shot-content">
+        <div>
+          <div class="shot-header">
+            <span class="shot-code">tilt</span>
+            <div>
+              <div class="shot-title">Tilt</div>
+              <div class="shot-subtitle">Vertical rotation on a fixed axis</div>
+            </div>
+          </div>
+          <p class="shot-desc">The camera body stays in one fixed position but rotates up or down around its own horizontal axis, the vertical equivalent of a pan.</p>
+          <ul class="shot-bullets">
+            <li>Camera position does not translate through space, only rotates</li>
+            <li>Common for revealing height (e.g. tilting up a building) or following vertical action</li>
+          </ul>
+        </div>
+        <div class="shot-rule">
+          <div class="shot-rule-label">Rule</div>
+          <p>If the camera rotates vertically in place (no translation), tag <code>tilt</code>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- dolly_in -->
+  <div class="shot-card">
+    <div class="shot-card-inner">
+      <div class="shot-image">
+        <svg viewBox="0 0 200 140" width="100%" height="100%">
+          <use href="#cam" x="0" y="0" width="200" height="140"/>
+          <line x1="95" y1="70" x2="155" y2="70" stroke="#60E21B" stroke-width="3" marker-end="url(#arrowhead)"/>
+        </svg>
+      </div>
+      <div class="shot-content">
+        <div>
+          <div class="shot-header">
+            <span class="shot-code">dolly_in</span>
+            <div>
+              <div class="shot-title">Dolly In</div>
+              <div class="shot-subtitle">Camera moves toward subject</div>
+            </div>
+          </div>
+          <p class="shot-desc">The physical camera rig itself travels forward through space, getting closer to the subject. Perspective and parallax shift naturally because the camera is actually relocating &mdash; unlike a zoom, which only changes lens focal length.</p>
+          <ul class="shot-bullets">
+            <li>Camera is physically on a dolly, slider, drone, gimbal, or being carried forward</li>
+            <li>Background elements shift relative to each other as the camera moves (parallax)</li>
+          </ul>
+        </div>
+        <div class="shot-rule">
+          <div class="shot-rule-label">Rule</div>
+          <p>If the camera rig physically translates closer to the subject, tag <code>dolly_in</code>. If only the lens changes focal length, use <code>zoom_in</code> instead.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- dolly_out -->
+  <div class="shot-card">
+    <div class="shot-card-inner">
+      <div class="shot-image">
+        <svg viewBox="0 0 200 140" width="100%" height="100%">
+          <use href="#cam" x="0" y="0" width="200" height="140"/>
+          <line x1="155" y1="70" x2="95" y2="70" stroke="#60E21B" stroke-width="3" marker-end="url(#arrowhead)"/>
+        </svg>
+      </div>
+      <div class="shot-content">
+        <div>
+          <div class="shot-header">
+            <span class="shot-code">dolly_out</span>
+            <div>
+              <div class="shot-title">Dolly Out</div>
+              <div class="shot-subtitle">Camera moves away from subject</div>
+            </div>
+          </div>
+          <p class="shot-desc">The physical camera rig travels backward through space, away from the subject, revealing more of the surrounding environment as it retreats.</p>
+          <ul class="shot-bullets">
+            <li>Camera physically translates away &mdash; not just a lens zoom-out</li>
+            <li>Often used to reveal scale or context at the end of a shot</li>
+          </ul>
+        </div>
+        <div class="shot-rule">
+          <div class="shot-rule-label">Rule</div>
+          <p>If the camera rig physically translates away from the subject, tag <code>dolly_out</code>. If only the lens focal length changes, use <code>zoom_out</code> instead.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- truck_left -->
+  <div class="shot-card">
+    <div class="shot-card-inner">
+      <div class="shot-image">
+        <svg viewBox="0 0 200 140" width="100%" height="100%">
+          <use href="#cam" x="0" y="0" width="200" height="140"/>
+          <line x1="140" y1="115" x2="60" y2="115" stroke="#60E21B" stroke-width="3" marker-end="url(#arrowhead)"/>
+          <line x1="45" y1="122" x2="155" y2="122" stroke="#45423F" stroke-width="2" stroke-dasharray="4 4"/>
+        </svg>
+      </div>
+      <div class="shot-content">
+        <div>
+          <div class="shot-header">
+            <span class="shot-code">truck_left</span>
+            <div>
+              <div class="shot-title">Truck Left</div>
+              <div class="shot-subtitle">Camera moves laterally left</div>
+            </div>
+          </div>
+          <p class="shot-desc">The entire camera rig translates sideways to the left while keeping roughly the same distance and framing on the subject &mdash; think of a camera sliding along a rail parallel to the action.</p>
+          <ul class="shot-bullets">
+            <li>Camera moves left-to-right in space, not rotating in place like a pan</li>
+            <li>Distance to the subject stays roughly constant</li>
+          </ul>
+        </div>
+        <div class="shot-rule">
+          <div class="shot-rule-label">Rule</div>
+          <p>If the camera rig physically slides sideways to the left, tag <code>truck_left</code>. If the camera only rotates in place, use <code>pan</code> instead.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- truck_right -->
+  <div class="shot-card">
+    <div class="shot-card-inner">
+      <div class="shot-image">
+        <svg viewBox="0 0 200 140" width="100%" height="100%">
+          <use href="#cam" x="0" y="0" width="200" height="140"/>
+          <line x1="60" y1="115" x2="140" y2="115" stroke="#60E21B" stroke-width="3" marker-end="url(#arrowhead)"/>
+          <line x1="45" y1="122" x2="155" y2="122" stroke="#45423F" stroke-width="2" stroke-dasharray="4 4"/>
+        </svg>
+      </div>
+      <div class="shot-content">
+        <div>
+          <div class="shot-header">
+            <span class="shot-code">truck_right</span>
+            <div>
+              <div class="shot-title">Truck Right</div>
+              <div class="shot-subtitle">Camera moves laterally right</div>
+            </div>
+          </div>
+          <p class="shot-desc">The entire camera rig translates sideways to the right while keeping roughly the same distance and framing on the subject.</p>
+          <ul class="shot-bullets">
+            <li>Camera moves right in space, not rotating in place like a pan</li>
+            <li>Distance to the subject stays roughly constant</li>
+          </ul>
+        </div>
+        <div class="shot-rule">
+          <div class="shot-rule-label">Rule</div>
+          <p>If the camera rig physically slides sideways to the right, tag <code>truck_right</code>. If the camera only rotates in place, use <code>pan</code> instead.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- pedestal_down -->
+  <div class="shot-card">
+    <div class="shot-card-inner">
+      <div class="shot-image">
+        <svg viewBox="0 0 200 140" width="100%" height="100%">
+          <use href="#cam" x="0" y="0" width="200" height="140"/>
+          <line x1="100" y1="100" x2="100" y2="130" stroke="#FABA17" stroke-width="3" marker-end="url(#arrowhead-y)"/>
+        </svg>
+      </div>
+      <div class="shot-content">
+        <div>
+          <div class="shot-header">
+            <span class="shot-code">pedestal_down</span>
+            <div>
+              <div class="shot-title">Pedestal Down</div>
+              <div class="shot-subtitle">Camera moves vertically downward</div>
+            </div>
+          </div>
+          <p class="shot-desc">The entire camera rig moves straight down vertically while keeping the same framing angle &mdash; it does not tilt, it translates downward in space. Think of a wheeled studio pedestal dolly: the camera sits on top of a vertical column, and that column lowers straight down, like a barber chair's hydraulic lift going down. This is <strong>not</strong> a shoulder-mounted or handheld shot &mdash; a handheld camera being lowered by hand is <code>handheld</code>, not <code>pedestal_down</code>.</p>
+          <ul class="shot-bullets">
+            <li>Vertical translation of the whole rig, not a rotation of the lens angle</li>
+            <li>Distinct from <code>crane_down</code>, which involves an arm swinging on a pivot</li>
+          </ul>
+        </div>
+        <div class="shot-rule">
+          <div class="shot-rule-label">Rule</div>
+          <p>If the framing angle stays constant and the path is a straight vertical line, tag <code>pedestal_down</code>. See the disambiguation section below for the exact visual test &mdash; and when in doubt, this is the default choice.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- crane_down -->
+  <div class="shot-card">
+    <div class="shot-card-inner">
+      <div class="shot-image">
+        <svg viewBox="0 0 200 140" width="100%" height="100%">
+          <path d="M40,40 L130,55" stroke="#8F8984" stroke-width="4" stroke-linecap="round"/>
+          <use href="#cam" x="80" y="15" width="120" height="84"/>
+          <path d="M170,55 A40,40 0 0,1 150,105" fill="none" stroke="#FABA17" stroke-width="3" marker-end="url(#arrowhead-y)"/>
+        </svg>
+      </div>
+      <div class="shot-content">
+        <div>
+          <div class="shot-header">
+            <span class="shot-code">crane_down</span>
+            <div>
+              <div class="shot-title">Crane Down</div>
+              <div class="shot-subtitle">Crane arm moves downward</div>
+            </div>
+          </div>
+          <p class="shot-desc">The camera is mounted on the end of a crane or jib arm &mdash; a rigid arm that pivots on a fulcrum, like a seesaw or a fishing rod. As the near end of the arm is lowered by the operator, the far end (with the camera) travels down, often through a curved arc. The framing angle frequently drifts as the arm pivots, but a skilled operator can also counter-tilt the camera head to keep the angle level throughout &mdash; in that case a crane move can look almost identical to a straight <code>pedestal_down</code>. This is <strong>not</strong> someone climbing up or down a ladder &mdash; it's the arm itself pivoting, distinct from a straight vertical pedestal move.</p>
+          <ul class="shot-bullets">
+            <li>Camera height decreases along a curved or arm-driven path</li>
+            <li>Framing angle often (not always) drifts gradually as the arm pivots &mdash; a level, counter-tilted crane move is still <code>crane_down</code></li>
+          </ul>
+        </div>
+        <div class="shot-rule">
+          <div class="shot-rule-label">Rule</div>
+          <p>Tag <code>crane_down</code> when you can see the arm/boom itself, a clearly curved path, or a changing framing angle. See the disambiguation section below &mdash; note that a well-operated crane can be visually indistinguishable from <code>pedestal_down</code>, so treat the visual test as a strong signal, not an absolute rule.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- handheld -->
+  <div class="shot-card">
+    <div class="shot-card-inner">
+      <div class="shot-image">
+        <svg viewBox="0 0 200 140" width="100%" height="100%">
+          <use href="#cam" x="0" y="0" width="200" height="140"/>
+          <path d="M50,110 q8,-10 16,0 t16,0 t16,0 t16,0" fill="none" stroke="#FABA17" stroke-width="3"/>
+        </svg>
+      </div>
+      <div class="shot-content">
+        <div>
+          <div class="shot-header">
+            <span class="shot-code">handheld</span>
+            <div>
+              <div class="shot-title">Handheld</div>
+              <div class="shot-subtitle">Handheld, unstabilized movement</div>
+            </div>
+          </div>
+          <p class="shot-desc">The camera is held in the operator's hands rather than mounted on a tripod, dolly, or rig &mdash; it is the equipment setup, not just the visible shake, that defines this tag. Handheld shots typically show small, irregular shakes, bobs, or drifts, but any shot held by hand belongs in this category, even if the operator is holding it very steady or using a handheld stabilizer.</p>
+          <ul class="shot-bullets">
+            <li>Visible micro-jitter or organic sway is the most common giveaway, but is not required &mdash; a very steady handheld shot is still <code>handheld</code>, not <code>static</code></li>
+            <li>Can co-occur with an intentional move (e.g. a handheld truck) &mdash; tag <code>handheld</code> whenever the camera is hand-held, even while also panning/trucking/dollying</li>
+          </ul>
+        </div>
+        <div class="shot-rule">
+          <div class="shot-rule-label">Rule</div>
+          <p>If the camera is being held in hands (not on a mount), tag <code>handheld</code> &mdash; regardless of how steady it looks. Reserve <code>static</code> strictly for camera that is on a fixed mount/support.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- whip_pan -->
+  <div class="shot-card">
+    <div class="shot-card-inner">
+      <div class="shot-image">
+        <svg viewBox="0 0 200 140" width="100%" height="100%">
+          <use href="#cam" x="0" y="0" width="200" height="140"/>
+          <line x1="20" y1="55" x2="70" y2="55" stroke="#E0503C" stroke-width="3"/>
+          <line x1="20" y1="70" x2="60" y2="70" stroke="#E0503C" stroke-width="3"/>
+          <line x1="20" y1="85" x2="65" y2="85" stroke="#E0503C" stroke-width="3"/>
+          <line x1="130" y1="55" x2="180" y2="55" stroke="#E0503C" stroke-width="3" marker-end="url(#arrowhead)"/>
+        </svg>
+      </div>
+      <div class="shot-content">
+        <div>
+          <div class="shot-header">
+            <span class="shot-code">whip_pan</span>
+            <div>
+              <div class="shot-title">Whip Pan</div>
+              <div class="shot-subtitle">Very fast pan used as a transition device</div>
+            </div>
+          </div>
+          <p class="shot-desc">An extremely fast horizontal pan that blurs the image heavily, typically used as a stylistic transition between two shots or moments rather than to smoothly follow action.</p>
+          <ul class="shot-bullets">
+            <li>Motion blur across most/all of the frame is a strong indicator</li>
+            <li>Usually very short in duration (often under half a second)</li>
+          </ul>
+        </div>
+        <div class="shot-rule">
+          <div class="shot-rule-label">Rule</div>
+          <p>If a horizontal pan is fast enough to heavily blur the frame and reads as a transition, tag <code>whip_pan</code> rather than <code>pan</code>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- zoom_in -->
+  <div class="shot-card">
+    <div class="shot-card-inner">
+      <div class="shot-image">
+        <svg viewBox="0 0 200 140" width="100%" height="100%">
+          <use href="#cam" x="0" y="0" width="200" height="140"/>
+          <path d="M50,50 L130,70 M50,90 L130,70" stroke="#60E21B" stroke-width="3" marker-end="url(#arrowhead)" fill="none"/>
+        </svg>
+      </div>
+      <div class="shot-content">
+        <div>
+          <div class="shot-header">
+            <span class="shot-code">zoom_in</span>
+            <div>
+              <div class="shot-title">Zoom In</div>
+              <div class="shot-subtitle">Lens zoom toward subject</div>
+            </div>
+          </div>
+          <p class="shot-desc">The physical camera position stays fixed in space; only the lens focal length increases, magnifying the subject. Because the camera itself does not move, there is little to no parallax shift between foreground and background.</p>
+          <ul class="shot-bullets">
+            <li>Camera rig does not translate; only field of view narrows</li>
+            <li>Background compresses/flattens rather than shifting via parallax</li>
+          </ul>
+        </div>
+        <div class="shot-rule">
+          <div class="shot-rule-label">Rule</div>
+          <p>If the camera position is fixed and only the framing narrows via the lens, tag <code>zoom_in</code>. If the rig itself physically travels forward, use <code>dolly_in</code>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- zoom_out -->
+  <div class="shot-card">
+    <div class="shot-card-inner">
+      <div class="shot-image">
+        <svg viewBox="0 0 200 140" width="100%" height="100%">
+          <use href="#cam" x="0" y="0" width="200" height="140"/>
+          <path d="M130,70 L50,50 M130,70 L50,90" stroke="#60E21B" stroke-width="3" marker-end="url(#arrowhead)" fill="none"/>
+        </svg>
+      </div>
+      <div class="shot-content">
+        <div>
+          <div class="shot-header">
+            <span class="shot-code">zoom_out</span>
+            <div>
+              <div class="shot-title">Zoom Out</div>
+              <div class="shot-subtitle">Lens zoom away from subject</div>
+            </div>
+          </div>
+          <p class="shot-desc">The physical camera position stays fixed in space; only the lens focal length decreases, widening the field of view and making the subject appear smaller.</p>
+          <ul class="shot-bullets">
+            <li>Camera rig does not translate; only field of view widens</li>
+            <li>No parallax shift between foreground and background layers</li>
+          </ul>
+        </div>
+        <div class="shot-rule">
+          <div class="shot-rule-label">Rule</div>
+          <p>If the camera position is fixed and only the framing widens via the lens, tag <code>zoom_out</code>. If the rig itself physically travels backward, use <code>dolly_out</code>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- arc -->
+  <div class="shot-card">
+    <div class="shot-card-inner">
+      <div class="shot-image">
+        <svg viewBox="0 0 200 140" width="100%" height="100%">
+          <path d="M45,100 A65,45 0 0,1 155,100" fill="none" stroke="#60E21B" stroke-width="3" marker-end="url(#arrowhead)"/>
+          <circle cx="100" cy="105" r="6" fill="#8F8984"/>
+          <use href="#cam" x="55" y="15" width="90" height="63"/>
+        </svg>
+      </div>
+      <div class="shot-content">
+        <div>
+          <div class="shot-header">
+            <span class="shot-code">arc</span>
+            <div>
+              <div class="shot-title">Arc / Orbit</div>
+              <div class="shot-subtitle">Camera travels in a curved path around the subject</div>
+            </div>
+          </div>
+          <p class="shot-desc">The camera physically moves along a curved or circular path around the subject while continuously re-aiming to keep the subject centered &mdash; effectively trucking and panning (or trucking and tilting) at the same time, so that the subject stays in frame as the camera's position sweeps around it.</p>
+          <ul class="shot-bullets">
+            <li>Camera position changes along a curve, not a straight line like <code>truck_left</code>/<code>truck_right</code></li>
+            <li>The framing continuously re-centers on the subject, unlike a pure <code>pan</code> where the camera doesn't relocate</li>
+            <li>Background behind the subject appears to rotate/reveal a different side as the camera orbits</li>
+          </ul>
+        </div>
+        <div class="shot-rule">
+          <div class="shot-rule-label">Rule</div>
+          <p>If the camera physically travels around the subject in a curved path while re-aiming to keep it centered, tag <code>arc</code> &mdash; do not force this into <code>truck_left</code>/<code>truck_right</code> or <code>pan</code>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- other -->
+  <div class="shot-card">
+    <div class="shot-card-inner">
+      <div class="shot-image">
+        <svg viewBox="0 0 200 140" width="100%" height="100%">
+          <use href="#cam" x="0" y="0" width="200" height="140"/>
+          <text x="150" y="45" font-family="IBM Plex Mono, monospace" font-size="28" fill="#8F8984">?</text>
+        </svg>
+      </div>
+      <div class="shot-content">
+        <div>
+          <div class="shot-header">
+            <span class="shot-code">other</span>
+            <div>
+              <div class="shot-title">Other</div>
+              <div class="shot-subtitle">Does not fit above</div>
+            </div>
+          </div>
+          <p class="shot-desc">Use only when the camera motion clearly does not match any of the enum values above &mdash; for example, an unusual rig move (roll/Dutch spin, complex compound rig motion) or motion that cannot be confidently classified.</p>
+          <ul class="shot-bullets">
+            <li>Do not use <code>other</code> just because you are unsure &mdash; first re-watch the clip frame-by-frame and re-check the definitions above</li>
+            <li>If you use <code>other</code> repeatedly for the same recognizable motion, flag it to your lead so it can be reviewed for a possible new enum value</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Disambiguation: dolly vs zoom -->
+  <div class="section-label">Critical Disambiguation &mdash; Dolly vs. Zoom</div>
+  <div class="shot-card">
+    <div style="padding: 30px 32px;">
+      <p style="font-size:15px;line-height:1.6;margin-bottom:18px;">This is the most common annotator confusion. Both make the subject appear larger or smaller, but the physical cause is completely different.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div style="background:#F4F3F3;border-radius:16px;padding:22px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+            <span class="code-pill">dolly_in / dolly_out</span>
+          </div>
+          <ul class="shot-bullets">
+            <li>Camera rig physically travels through space</li>
+            <li>Background objects shift position relative to each other (parallax)</li>
+            <li>Perspective/depth relationships change naturally</li>
+          </ul>
+        </div>
+        <div style="background:#F4F3F3;border-radius:16px;padding:22px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+            <span class="code-pill code-pill-alt">zoom_in / zoom_out</span>
+          </div>
+          <ul class="shot-bullets">
+            <li>Camera rig stays in one fixed spot</li>
+            <li>Background objects do not shift relative to each other, only scale together</li>
+            <li>Image can look slightly "flattened" or "compressed" at long focal lengths</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout" style="margin-top:18px;">
+        <div class="callout-label">Quick test</div>
+        <p>Watch two background objects at different depths. If they slide relative to one another as the shot progresses, the camera physically moved (<code>dolly</code>). If they stay in the same relative position and only scale up/down together, it is a lens change (<code>zoom</code>).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Disambiguation: pan vs truck -->
+  <div class="section-label">Critical Disambiguation &mdash; Pan vs. Truck</div>
+  <div class="shot-card">
+    <div style="padding: 30px 32px;">
+      <p style="font-size:15px;line-height:1.6;margin-bottom:18px;">Both can look similar on screen (the frame sweeps sideways), but the camera's physical behavior is different.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div style="background:#F4F3F3;border-radius:16px;padding:22px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+            <span class="code-pill">pan</span>
+          </div>
+          <ul class="shot-bullets">
+            <li>Camera stays in one fixed spot and rotates on its axis</li>
+            <li>Nearby and distant objects sweep across frame at the same rate (no parallax)</li>
+          </ul>
+        </div>
+        <div style="background:#F4F3F3;border-radius:16px;padding:22px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+            <span class="code-pill code-pill-alt">truck_left / truck_right</span>
+          </div>
+          <ul class="shot-bullets">
+            <li>Camera physically slides sideways through space</li>
+            <li>Nearby objects move across frame faster than distant objects (parallax)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout" style="margin-top:18px;">
+        <div class="callout-label">Watch out for arc/orbit shots</div>
+        <p>If the camera moves sideways <strong>and</strong> continuously re-aims to keep the subject centered as it curves around them, that's an <strong>arc/orbit shot</strong> &mdash; a combination of trucking and panning at once, not a pure <code>pan</code> or pure <code>truck_left</code>/<code>truck_right</code>. Tag these as <code>arc</code> instead &mdash; see its own card above.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Disambiguation: pedestal down vs crane down -->
+  <div class="section-label">Critical Disambiguation &mdash; Pedestal Down vs. Crane Down</div>
+  <div class="shot-card">
+    <div style="padding: 30px 32px;">
+      <p style="font-size:15px;line-height:1.6;margin-bottom:18px;">These two are genuinely hard to tell apart by eye, since both simply move the frame downward. Don't try to guess based on how "big" or "cinematic" the move looks &mdash; use the two concrete visual checks below instead.</p>
+      <p style="font-size:13.5px;line-height:1.6;margin-bottom:18px;color:#45423F;"><strong>In plain terms:</strong> <code>pedestal_down</code> is a vertical column sinking straight down, like a barber chair's hydraulic lift. <code>crane_down</code> is a rigid arm pivoting on a fulcrum, like a seesaw or fishing rod, swinging the camera down through a curve. Neither one is a person climbing a ladder, and neither one is a shoulder-mounted camera &mdash; that would be <code>handheld</code>.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div style="background:#F4F3F3;border-radius:16px;padding:22px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+            <span class="code-pill">pedestal_down</span>
+          </div>
+          <ul class="shot-bullets">
+            <li>The camera's angle stays parallel/constant &mdash; it does not tip forward or backward as it descends</li>
+            <li>The path is a straight vertical line, like an elevator dropping</li>
+            <li>Background elements keep the same relative alignment to each other; only their position in frame shifts upward as the camera sinks</li>
+          </ul>
+        </div>
+        <div style="background:#F4F3F3;border-radius:16px;padding:22px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+            <span class="code-pill code-pill-alt">crane_down</span>
+          </div>
+          <ul class="shot-bullets">
+            <li>The camera's angle often gradually changes as it descends (tips down and/or drifts forward/back), because it is riding the end of a pivoting arm &mdash; but a skilled operator can counter-tilt to keep the angle level, so this cue is not guaranteed</li>
+            <li>The physical path curves, even if the framing angle is kept level by the operator</li>
+            <li>When the angle does drift, the horizon line or background perspective visibly tilts/shifts relative to the frame edges, not just moves straight up</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout" style="margin-top:18px;">
+        <div class="callout-label">Quick test</div>
+        <p>Watch the horizon line or a straight background edge (a wall, a doorframe, a table edge). If it stays perfectly parallel to the top/bottom of the frame the whole time, treat it as <code>pedestal_down</code> unless you can also see the crane arm/rig itself. If it visibly rotates or tilts relative to the frame as the camera drops, it's <code>crane_down</code>.</p>
+      </div>
+      <div class="callout callout-danger" style="margin-top:12px;">
+        <div class="callout-label">If you genuinely can't tell</div>
+        <p>A level, counter-tilted crane move can look visually identical to a pedestal move &mdash; this is expected, not a sign you're doing something wrong. When there's no visible rig and the angle stays level throughout, <strong>default to <code>pedestal_down</code></strong>. Reserve <code>crane_down</code> for segments where you can see the arm/rig itself, a clearly curved path, or a changing framing angle.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Disambiguation: tilt down vs crane_down / pedestal_down -->
+  <div class="section-label">Critical Disambiguation &mdash; Tilt (Down) vs. Crane/Pedestal Down</div>
+  <div class="shot-card">
+    <div style="padding: 30px 32px;">
+      <p style="font-size:15px;line-height:1.6;margin-bottom:18px;">All three point the frame downward, but the question is whether the camera's <strong>physical location</strong> changes, or only its <strong>orientation</strong>.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div style="background:#F4F3F3;border-radius:16px;padding:22px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+            <span class="code-pill">tilt</span> <span style="font-size:13px;color:#8F8984;">(direction: down)</span>
+          </div>
+          <ul class="shot-bullets">
+            <li>The camera stays at the exact same physical location/height &mdash; only its orientation rotates downward, like a person nodding their head while standing still</li>
+            <li>Background elements do not shift relative to each other (no parallax); the same vantage point is just aimed lower</li>
+          </ul>
+        </div>
+        <div style="background:#F4F3F3;border-radius:16px;padding:22px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+            <span class="code-pill code-pill-alt">crane_down / pedestal_down</span>
+          </div>
+          <ul class="shot-bullets">
+            <li>The camera's actual height/location changes &mdash; like a person going from standing to crouching, their eye-level itself moves</li>
+            <li>Background elements shift relative to each other as the vantage point relocates (parallax)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout" style="margin-top:18px;">
+        <div class="callout-label">Quick test</div>
+        <p>Ask: did the camera's <strong>vantage point</strong> (its height and position in the room/scene) actually change, or did it just look somewhere else from the same spot? Same spot, new angle &rarr; <code>tilt</code>. Different vantage point &rarr; <code>crane_down</code> (arcing) or <code>pedestal_down</code> (straight vertical).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================== -->
+  <!-- PART 3: CAMERA DIRECTION TAGGING -->
+  <!-- =========================================================== -->
+  <div class="section-label">Part 3 &mdash; Tagging Each Segment: camera_direction</div>
+
+  <div class="tag-header">
+    <div>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;">
+        <span class="tag-number">Tag 2</span>
+        <h2>camera_direction</h2>
+      </div>
+      <p>Describes the <strong>dominant direction</strong> the camera moves or points toward during the segment. Tag this alongside <code>camera_motion</code> for every segment &mdash; the two enums are applied together, not as alternatives.</p>
+    </div>
+  </div>
+
+  <div class="dir-grid">
+    <div class="dir-card">
+      <div class="dir-card-header"><span class="code-pill">left</span><span class="dir-title">Left</span></div>
+      <p class="dir-desc">Camera moves or points toward screen-left. Pairs naturally with <code>pan</code> (rotating left) or <code>truck_left</code> (sliding left).</p>
+    </div>
+    <div class="dir-card">
+      <div class="dir-card-header"><span class="code-pill">right</span><span class="dir-title">Right</span></div>
+      <p class="dir-desc">Camera moves or points toward screen-right. Pairs naturally with <code>pan</code> (rotating right) or <code>truck_right</code> (sliding right).</p>
+    </div>
+    <div class="dir-card">
+      <div class="dir-card-header"><span class="code-pill">up</span><span class="dir-title">Up</span></div>
+      <p class="dir-desc">Camera moves or points upward. Pairs naturally with <code>tilt</code> (rotating up) or an upward pedestal/crane move.</p>
+    </div>
+    <div class="dir-card">
+      <div class="dir-card-header"><span class="code-pill">down</span><span class="dir-title">Down</span></div>
+      <p class="dir-desc">Camera moves or points downward. Pairs naturally with <code>tilt</code> (rotating down), <code>pedestal_down</code>, or <code>crane_down</code>.</p>
+    </div>
+    <div class="dir-card">
+      <div class="dir-card-header"><span class="code-pill">push</span><span class="dir-title">Push</span></div>
+      <p class="dir-desc">Moving toward the subject/scene ("push in"). Pairs with <code>dolly_in</code> (physical push) or <code>zoom_in</code> (lens push).</p>
+    </div>
+    <div class="dir-card">
+      <div class="dir-card-header"><span class="code-pill">pull</span><span class="dir-title">Pull</span></div>
+      <p class="dir-desc">Moving away from the subject/scene ("pull out"). Pairs with <code>dolly_out</code> (physical pull) or <code>zoom_out</code> (lens pull).</p>
+    </div>
+  </div>
+
+  <div class="dir-grid" style="grid-template-columns:1fr;">
+    <div class="dir-card">
+      <div class="dir-card-header"><span class="code-pill code-pill-alt">none</span><span class="dir-title">None</span></div>
+      <p class="dir-desc">No dominant directional component &mdash; used for <code>static</code> segments, in-place rotations without a clear single sweep direction, or <code>handheld</code> segments where the shake has no consistent directional bias.</p>
+    </div>
+  </div>
+
+  <!-- Quick reference table -->
+  <div class="section-label">Quick Reference &mdash; Typical Motion / Direction Pairings</div>
+  <div class="comparison-table">
+    <table>
+      <thead>
+        <tr>
+          <th>camera_motion</th>
+          <th>Typical camera_direction</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="code-pill">static</span></td><td>none</td><td>No directional component by definition</td></tr>
+        <tr><td><span class="code-pill">pan</span></td><td>left / right</td><td>Whichever way the sweep travels</td></tr>
+        <tr><td><span class="code-pill">tilt</span></td><td>up / down</td><td>Whichever way the sweep travels</td></tr>
+        <tr><td><span class="code-pill">dolly_in</span></td><td>push</td><td>Physical move toward subject</td></tr>
+        <tr><td><span class="code-pill">dolly_out</span></td><td>pull</td><td>Physical move away from subject</td></tr>
+        <tr><td><span class="code-pill">truck_left</span></td><td>left</td><td>Lateral slide direction</td></tr>
+        <tr><td><span class="code-pill">truck_right</span></td><td>right</td><td>Lateral slide direction</td></tr>
+        <tr><td><span class="code-pill">pedestal_down</span></td><td>down</td><td>Vertical translation direction</td></tr>
+        <tr><td><span class="code-pill">crane_down</span></td><td>down</td><td>May co-occur with a slight push/pull if the arm also swings forward/back &mdash; tag the dominant direction</td></tr>
+        <tr><td><span class="code-pill">handheld</span></td><td>none (usually)</td><td>Use a directional value only if the operator is also clearly walking/panning in one dominant direction</td></tr>
+        <tr><td><span class="code-pill">whip_pan</span></td><td>left / right</td><td>Direction of the fast sweep</td></tr>
+        <tr><td><span class="code-pill">zoom_in</span></td><td>push</td><td>Lens-only move toward subject</td></tr>
+        <tr><td><span class="code-pill">zoom_out</span></td><td>pull</td><td>Lens-only move away from subject</td></tr>
+        <tr><td><span class="code-pill">arc</span></td><td>left / right</td><td>Direction of the orbit sweep around the subject</td></tr>
+        <tr><td><span class="code-pill">other</span></td><td>closest fit, or none</td><td>Pick whichever directional value best fits; use none if truly ambiguous</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout callout-danger">
+    <div class="callout-label">Important</div>
+    <p>The table above shows <strong>typical</strong> pairings, not fixed rules. A <code>truck_left</code> shot filmed on a curved track could still resolve to a mostly-<code>push</code> direction, for example. Always judge <code>camera_direction</code> from what the segment actually shows, not from the table.</p>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-left">TwelveLabs &middot; Data &amp; Annotation Team</div>
+    <div class="footer-right">Camera Motion &amp; Direction Guideline &middot; V1.0</div>
+  </div>
+
+</div>
+</body>
+</html>
