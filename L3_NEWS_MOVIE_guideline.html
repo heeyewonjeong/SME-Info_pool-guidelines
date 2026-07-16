@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>News &amp; Movie Camera Angle Types — Annotation Guideline</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @font-face { font-family: 'Milling'; font-style: normal; font-weight: 400; src: url('https://d2n8i6crd2t3p1.cloudfront.net/font/milling/205TF-Milling-Duplex1mm.woff2') format('woff2'); }
+  @font-face { font-family: 'Milling'; font-style: normal; font-weight: 700; src: url('https://d2n8i6crd2t3p1.cloudfront.net/font/milling/205TF-Milling-Triplex1mm.woff2') format('woff2'); }
+  @font-face { font-family: 'Pretendard Variable'; font-style: normal; font-weight: 45 920; font-display: swap; src: url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/woff2/PretendardVariable.woff2') format('woff2-variations'); }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  h1, h2, h3, h4, h5, h6, p, ul, ol, li, figure, blockquote, hr { margin: 0; padding: 0; }
+  table, td, th { margin: 0; padding: 0; border-collapse: collapse; }
+  img { display: block; max-width: 100%; }
+  a { text-decoration: none; color: inherit; }
+
+  body {
+    margin: 0;
+    padding: 48px 0 80px;
+    background: #F4F3F3;
+    color: #1D1C1B;
+    font-family: 'Milling', 'Pretendard Variable', 'Noto Sans', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+  /* Header */
+  .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 48px; }
+  .header svg { color: #1D1C1B; }
+  .header-meta { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #8F8984; text-transform: uppercase; letter-spacing: 2px; text-align: right; line-height: 1.6; }
+
+  /* Hero */
+  .hero { background: #1D1C1B; border-radius: 24px; padding: 48px; margin-bottom: 48px; position: relative; overflow: hidden; }
+  .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; border-radius: 0 0 24px 24px; background: linear-gradient(90deg, #60E21B 0%, #FABA17 32.5%, #FFB592 69%, #FFB0CD 100%); }
+  .hero-eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #60E21B; margin-bottom: 16px; }
+  .hero h1 { font-size: 42px; font-weight: 400; letter-spacing: -0.5px; line-height: 1.15; color: #F4F3F3; margin-bottom: 16px; }
+  .hero .subtitle { font-size: 16px; color: #9B9895; line-height: 1.6; max-width: 560px; }
+
+  /* TOC nav strip */
+  .toc-strip { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 48px; }
+  .toc-item { display: flex; align-items: center; gap: 8px; background: #ECECEC; border-radius: 12px; padding: 10px 16px; font-size: 13px; color: #1D1C1B; cursor: pointer; transition: background 0.15s; text-decoration: none; }
+  .toc-item:hover { background: #D3D1CF; }
+  .toc-num { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #8F8984; letter-spacing: 1px; }
+
+  /* Gradient / dashed dividers */
+  .gradient-divider { height: 2px; background: linear-gradient(90deg, #60E21B 0%, #FABA17 32.5%, #FFB592 69%, #FFB0CD 100%); border: none; margin: 0 0 48px; border-radius: 1px; }
+  .dashed-divider { border: none; border-bottom: 1px dashed #D3D1CF; margin: 28px 0; }
+
+  /* Section label */
+  .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #8F8984; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px dashed #D3D1CF; }
+
+  /* Pills */
+  .pill { display: inline-block; background: #BFF3A4; border: none; border-radius: 999px; padding: 5px 14px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #1D1C1B; text-transform: uppercase; letter-spacing: 2px; }
+  .pill-orange { background: #FDE3A2; }
+  .pill-peach  { background: #FFD3BE; }
+  .pill-pink   { background: #FFDFEB; }
+  .pill-neutral{ background: #ECECEC; color: #45423F; }
+
+  /* Angle card */
+  .camera-card { background: #ECECEC; border-radius: 24px; padding: 32px; margin-bottom: 24px; }
+  .card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 20px; }
+  .card-title-group { flex: 1; }
+  .card-number { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8F8984; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 6px; }
+  .card-title { font-size: 26px; font-weight: 700; color: #1D1C1B; line-height: 1.2; }
+
+  /* Definition block */
+  .definition-block { background: #fff; border-radius: 16px; padding: 20px 24px; margin-bottom: 20px; border-left: 3px solid #60E21B; }
+  .definition-block p { font-size: 15px; color: #1D1C1B; line-height: 1.65; }
+
+  /* Props grid */
+  .props-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+  .prop-item { background: #fff; border-radius: 12px; padding: 14px 16px; }
+  .prop-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: #8F8984; margin-bottom: 4px; }
+  .prop-value { font-size: 14px; color: #1D1C1B; line-height: 1.4; }
+
+  /* Bullet list */
+  .bullet-list { list-style: none; padding: 0; }
+  .bullet-list li { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 8px; font-size: 15px; color: #1D1C1B; line-height: 1.55; }
+  .bullet-list li::before { content: '\25CF'; color: #60E21B; font-size: 8px; line-height: 1; margin-top: 7px; flex-shrink: 0; }
+
+  /* Rule of thumb */
+  .rule-block { background: #1D1C1B; border-radius: 14px; padding: 16px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .rule-icon { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #60E21B; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; margin-top: 2px; flex-shrink: 0; }
+  .rule-text { font-size: 14px; color: #F4F3F3; line-height: 1.55; }
+
+  /* NOT list */
+  .not-list { list-style: none; padding: 0; }
+  .not-list li { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 8px; font-size: 14px; color: #45423F; line-height: 1.5; }
+  .not-list li::before { content: '✕'; color: #E22E22; font-size: 11px; line-height: 1; margin-top: 3px; flex-shrink: 0; font-weight: 700; }
+
+  /* Context badges */
+  .sport-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .sport-badge { font-family: 'IBM Plex Mono', monospace; font-size: 11px; background: #F4F3F3; color: #45423F; border-radius: 8px; padding: 4px 10px; letter-spacing: 1px; text-transform: uppercase; }
+
+  /* Comparison table */
+  .compare-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .compare-table thead tr { border-bottom: 2px solid #1D1C1B; }
+  .compare-table th { text-align: left; padding: 10px 14px; font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 400; text-transform: uppercase; letter-spacing: 1.5px; color: #8F8984; }
+  .compare-table td { padding: 12px 14px; border-bottom: 1px solid #D3D1CF; color: #1D1C1B; line-height: 1.4; vertical-align: top; }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table .row-label { font-weight: 700; font-size: 13px; }
+
+  /* Multi-angle order chip */
+  .order-chip-row { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }
+  .order-chip { font-family: 'IBM Plex Mono', monospace; font-size: 11px; background: #1D1C1B; color: #F4F3F3; border-radius: 999px; padding: 4px 12px; letter-spacing: 0.5px; }
+  .order-arrow { color: #8F8984; font-size: 13px; }
+
+  /* Footer */
+  .footer { margin-top: 64px; padding-top: 24px; border-top: 1px dashed #D3D1CF; display: flex; align-items: center; justify-content: space-between; }
+  .footer-text { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8F8984; text-transform: uppercase; letter-spacing: 1px; }
+
+  @media (max-width: 600px) {
+    .props-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 28px; }
+    .card-title { font-size: 22px; }
+    .hero { padding: 32px 24px; }
+    .camera-card { padding: 24px; }
+    .toc-strip { gap: 6px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <svg viewBox="0 0 179 36" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:140px;height:auto;" aria-label="TwelveLabs">
+      <g>
+        <rect x="10.78" y="12.36" width="15.81" height="2.14" rx="0.63" fill="currentColor"/>
+        <rect x="0.00" y="12.36" width="8.66" height="2.14" rx="0.63" fill="currentColor"/>
+        <rect x="30.51" y="12.36" width="9.89" height="2.14" rx="0.63" fill="currentColor"/>
+        <rect x="31.93" y="9.28" width="8.47" height="2.15" rx="0.63" fill="currentColor"/>
+        <rect x="41.51" y="9.28" width="6.73" height="2.15" rx="0.63" fill="currentColor"/>
+        <rect x="38.65" y="6.14" width="7.66" height="2.15" rx="0.63" fill="currentColor"/>
+        <rect x="41.08" y="3.07" width="2.24" height="2.15" rx="0.63" fill="currentColor"/>
+        <rect x="18.26" y="27.71" width="3.90" height="2.15" rx="0.63" fill="currentColor"/>
+        <rect x="25.02" y="27.71" width="2.56" height="2.15" rx="0.63" fill="currentColor"/>
+        <rect x="28.74" y="27.71" width="6.88" height="2.15" rx="0.63" fill="currentColor"/>
+        <rect x="32.20" y="24.64" width="2.87" height="2.14" rx="0.63" fill="currentColor"/>
+        <rect x="12.88" y="27.71" width="2.24" height="2.15" rx="0.63" fill="currentColor"/>
+        <rect x="23.29" y="30.78" width="2.24" height="2.15" rx="0.63" fill="currentColor"/>
+        <rect x="21.09" y="33.86" width="2.15" height="2.14" rx="0.63" fill="currentColor"/>
+        <rect x="29.58" y="0.00" width="2.80" height="2.15" rx="0.63" fill="currentColor"/>
+        <rect x="13.71" y="9.28" width="7.14" height="2.15" rx="0.63" fill="currentColor"/>
+        <rect x="26.96" y="3.07" width="4.32" height="2.15" rx="0.63" fill="currentColor"/>
+        <rect x="24.29" y="6.14" width="6.99" height="2.15" rx="0.63" fill="currentColor"/>
+        <rect x="46.04" y="12.36" width="4.08" height="2.14" rx="0.63" fill="currentColor"/>
+        <rect x="7.52" y="15.43" width="20.15" height="2.15" rx="0.63" fill="currentColor"/>
+        <rect x="25.83" y="21.57" width="7.87" height="2.15" rx="0.63" fill="currentColor"/>
+        <rect x="10.78" y="18.50" width="25.62" height="2.15" rx="0.63" fill="currentColor"/>
+        <rect x="6.85" y="21.57" width="9.52" height="2.15" rx="0.63" fill="currentColor"/>
+        <rect x="15.56" y="24.64" width="3.11" height="2.14" rx="0.63" fill="currentColor"/>
+        <rect x="26.58" y="24.64" width="3.38" height="2.14" rx="0.63" fill="currentColor"/>
+        <rect x="9.79" y="24.64" width="3.17" height="2.14" rx="0.63" fill="currentColor"/>
+        <rect x="30.51" y="15.43" width="8.14" height="2.15" rx="0.63" fill="currentColor"/>
+        <rect x="32.40" y="6.12" width="2.24" height="2.15" rx="0.63" fill="currentColor"/>
+      </g>
+      <g transform="translate(58.97 9.09) scale(1)">
+        <path d="M0.700246 2.1445C0.24618 2.1445 0 1.89832 0 1.44426V0.700246C0 0.24618 0.24618 0 0.700246 0H12.6646C13.1187 0 13.3649 0.24618 13.3649 0.700246V1.44426C13.3649 1.89832 13.1187 2.1445 12.6646 2.1445H7.82306V16.8059C7.82306 17.26 7.57688 17.5062 7.12282 17.5062H6.24751C5.79344 17.5062 5.54726 17.26 5.54726 16.8059V2.1445H0.700246Z" fill="currentColor"/>
+        <path d="M14.5079 17.506C14.0976 17.506 13.8405 17.32 13.7202 16.9262L10.3502 6.03404C10.2408 5.68939 10.2463 5.45962 10.3612 5.22438C10.4761 5.00008 10.7004 4.90161 11.0942 4.90161H11.7179C12.1337 4.90161 12.3853 5.08761 12.5057 5.48697L15.241 14.53L15.2903 14.7488L15.3395 14.5191L18.1514 5.4815C18.2718 5.08761 18.5289 4.90161 18.9392 4.90161H20.2084C20.6187 4.90161 20.8758 5.08761 20.9962 5.4815L23.8081 14.5191L23.8628 14.7652L23.9175 14.5245L26.6528 5.48697C26.7732 5.08761 27.0248 4.90161 27.4406 4.90161H28.0533C28.4472 4.90161 28.6715 5.00008 28.7864 5.22438C28.9013 5.45962 28.9068 5.68939 28.7973 6.03404L25.4274 16.9262C25.3071 17.32 25.0499 17.506 24.6396 17.506H23.2337C22.8234 17.506 22.5662 17.32 22.4459 16.9262L19.6394 7.8886L19.5683 7.60412L19.4972 7.8886L16.6962 16.9262C16.5704 17.32 16.3133 17.506 15.903 17.506H14.5079Z" fill="currentColor"/>
+        <path d="M35.6818 17.8126C32.0274 17.8126 29.582 15.2086 29.582 11.122C29.582 7.07914 31.9891 4.59546 35.4739 4.59546C39.0025 4.59546 41.1963 7.13385 41.1963 10.739V11.0071C41.1963 11.4612 40.9501 11.7073 40.496 11.7073H31.8359C32.0274 14.2184 33.4717 15.7392 35.6818 15.7392C37.2191 15.7392 38.1546 15.1374 38.5321 14.0871C38.6743 13.6877 38.8822 13.4798 39.3034 13.4798H40.1076C40.5781 13.4798 40.8571 13.7424 40.775 14.2074C40.4085 16.341 38.4172 17.8126 35.6818 17.8126ZM31.9235 9.81995H38.9259C38.6688 7.7958 37.4215 6.55396 35.4739 6.55396C33.5866 6.55396 32.2955 7.76845 31.9235 9.81995Z" fill="currentColor"/>
+        <path d="M43.209 0.700246C43.209 0.24618 43.4552 0 43.9092 0H44.7408C45.1948 0 45.441 0.24618 45.441 0.700246V16.8059C45.441 17.26 45.1948 17.5062 44.7408 17.5062H43.9092C43.4552 17.5062 43.209 17.26 43.209 16.8059V0.700246Z" fill="currentColor"/>
+        <path d="M51.9967 17.506C51.5918 17.506 51.3402 17.331 51.1925 16.9535L47.0676 6.05045C46.9363 5.71127 46.9308 5.47603 47.0512 5.23532C47.1661 5.00555 47.3958 4.90161 47.7897 4.90161H48.4024C48.8073 4.90161 49.0644 5.07667 49.2066 5.45962L52.5602 14.4753L52.7462 15.0552L52.9322 14.4753L56.2857 5.45962C56.4279 5.07667 56.685 4.90161 57.0899 4.90161H57.7026C58.0965 4.90161 58.3262 5.00555 58.4411 5.23532C58.5615 5.47603 58.556 5.71127 58.4247 6.05045L54.2998 16.9535C54.1521 17.331 53.9005 17.506 53.4956 17.506H51.9967Z" fill="currentColor"/>
+        <path d="M65.176 17.8126C61.5216 17.8126 59.0762 15.2086 59.0762 11.122C59.0762 7.07914 61.4833 4.59546 64.9681 4.59546C68.4967 4.59546 70.6904 7.13385 70.6904 10.739V11.0071C70.6904 11.4612 70.4442 11.7073 69.9902 11.7073H61.3301C61.5216 14.2184 62.9658 15.7392 65.176 15.7392C66.7132 15.7392 67.6487 15.1374 68.0262 14.0871C68.1684 13.6877 68.3763 13.4798 68.7976 13.4798H69.6018C70.0722 13.4798 70.3512 13.7424 70.2692 14.2074C69.9026 16.341 67.9113 17.8126 65.176 17.8126ZM61.4176 9.81995H68.4201C68.163 7.7958 66.9156 6.55396 64.9681 6.55396C63.0807 6.55396 61.7896 7.76845 61.4176 9.81995Z" fill="currentColor"/>
+        <path d="M73.5518 17.5062C73.0977 17.5062 72.8516 17.26 72.8516 16.8059V0.700246C72.8516 0.24618 73.0977 0 73.5518 0H74.4271C74.8812 0 75.1274 0.24618 75.1274 0.700246V15.3507H82.9832C83.4373 15.3507 83.6835 15.5969 83.6835 16.051V16.8059C83.6835 17.26 83.4373 17.5062 82.9832 17.5062H73.5518Z" fill="currentColor"/>
+        <path d="M89.657 4.59546C93.0488 4.59546 94.5861 6.20384 94.5806 8.80241L94.5696 13.6002C94.5696 14.5193 94.6025 15.8377 94.7228 16.7568C94.783 17.2327 94.5806 17.5062 94.0992 17.5062H93.3552C92.923 17.5062 92.6768 17.3421 92.633 17.0084L92.5072 16.062C91.8398 17.1616 90.5323 17.7251 88.9294 17.7251C86.0354 17.7251 84.252 16.0182 84.252 13.6932C84.252 11.6581 85.6853 10.4053 88.1252 10.2303L91.6866 9.9786C92.3321 9.93484 92.3595 9.87466 92.3595 9.27288V8.74223C92.3595 7.34174 91.5115 6.63055 89.657 6.63055C87.8462 6.63055 87.042 7.32532 86.9654 8.2991C86.9326 8.75864 86.7739 9.00482 86.3089 9.00482H85.4555C85.0124 9.00482 84.7334 8.78052 84.7279 8.34287C84.7115 6.29684 86.2159 4.59546 89.657 4.59546ZM86.5059 13.7151C86.5059 14.9405 87.507 15.8213 89.2139 15.8213C91.2107 15.8213 92.3595 14.6177 92.3595 12.8124V11.6253C92.0969 11.7183 91.7851 11.7839 91.4295 11.8167L88.3112 12.1122C87.1733 12.2216 86.5059 12.6592 86.5059 13.7151Z" fill="currentColor"/>
+        <path d="M99.5039 16.8059C99.5039 17.26 99.2577 17.5062 98.8037 17.5062H97.9776C97.5235 17.5062 97.2773 17.26 97.2773 16.8059V0.700246C97.2773 0.24618 97.5235 0 97.9776 0H98.8091C99.2632 0 99.5094 0.24618 99.5094 0.700246V6.47181C100.248 5.31749 101.572 4.59536 103.268 4.59536C106.506 4.59536 108.963 7.16111 108.963 11.2039C108.963 15.2468 106.506 17.8125 103.268 17.8125C101.566 17.8125 100.242 17.0904 99.5039 15.9306V16.8059ZM106.709 11.2039C106.709 8.28807 105.04 6.67422 103.054 6.67422C101.069 6.67422 99.3781 8.28807 99.3781 11.2039C99.3781 14.1198 101.069 15.7337 103.054 15.7337C105.04 15.7337 106.709 14.1198 106.709 11.2039Z" fill="currentColor"/>
+        <path d="M115.418 17.8126C111.474 17.8126 110.369 15.7119 110.391 13.9613C110.396 13.5236 110.675 13.3048 111.119 13.3048H111.906C112.36 13.3048 112.557 13.5455 112.601 13.9995C112.716 15.0827 113.427 15.7502 115.391 15.7502C117.404 15.7502 118.302 15.0335 118.302 13.9284C118.302 12.9546 117.749 12.5991 116.376 12.3638L114.013 11.959C112.032 11.6198 110.719 10.5038 110.719 8.50152C110.719 6.2476 112.393 4.59546 115.49 4.59546C118.695 4.59546 120.364 6.27496 120.337 8.23346C120.331 8.66564 120.041 8.88447 119.604 8.88447H118.805C118.351 8.88447 118.187 8.64376 118.121 8.20063C118.006 7.3855 117.339 6.64149 115.49 6.64149C113.651 6.64149 112.929 7.41833 112.929 8.42493C112.929 9.29477 113.433 9.67771 114.691 9.90201L117.054 10.3178C119.1 10.6788 120.523 11.68 120.523 13.8245C120.523 15.8268 119.314 17.8126 115.418 17.8126Z" fill="currentColor"/>
+      </g>
+    </svg>
+    <div class="header-meta">
+      Annotation Guideline<br>
+      News &amp; Movie · Camera Angle
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-eyebrow">Data &amp; Annotation Team</div>
+    <h1>News &amp; Movie<br>Camera Angle Types</h1>
+    <p class="subtitle">Reference guide for classifying camera angle in news and movie video content. If a single segment shows more than one angle over time, tag it as More Than One and list every angle in chronological order.</p>
+  </div>
+
+  <!-- TOC -->
+  <hr class="gradient-divider">
+  <div class="section-label">Camera Angle Types — 6 Categories</div>
+  <nav class="toc-strip">
+    <a class="toc-item" href="#ang-01"><span class="toc-num">01</span> Eye-Level</a>
+    <a class="toc-item" href="#ang-02"><span class="toc-num">02</span> High Angle</a>
+    <a class="toc-item" href="#ang-03"><span class="toc-num">03</span> Low Angle</a>
+    <a class="toc-item" href="#ang-04"><span class="toc-num">04</span> Dutch Angle</a>
+    <a class="toc-item" href="#ang-05"><span class="toc-num">05</span> Overhead</a>
+    <a class="toc-item" href="#ang-06"><span class="toc-num">06</span> Aerial</a>
+    <a class="toc-item" href="#multi"><span class="toc-num">07</span> More Than One</a>
+  </nav>
+
+  <!-- 01. Eye-Level -->
+  <div class="camera-card" id="ang-01">
+    <div class="card-header">
+      <div class="card-title-group">
+        <div class="card-number">Camera Angle 01</div>
+        <div class="card-title">Eye-Level</div>
+      </div>
+      <span class="pill">Neutral</span>
+    </div>
+    <div class="definition-block">
+      <p>The camera is positioned at the approximate eye height of the subject, presenting a neutral, natural perspective that mirrors how a person would view the scene in real life.</p>
+    </div>
+    <div class="props-grid">
+      <div class="prop-item">
+        <div class="prop-label">Position</div>
+        <div class="prop-value">At the subject's eye height</div>
+      </div>
+      <div class="prop-item">
+        <div class="prop-label">Effect</div>
+        <div class="prop-value">Neutral, natural, relatable perspective</div>
+      </div>
+      <div class="prop-item">
+        <div class="prop-label">Stability</div>
+        <div class="prop-value">Fixed or handheld — either is common</div>
+      </div>
+      <div class="prop-item">
+        <div class="prop-label">Framing</div>
+        <div class="prop-value">Camera and subject roughly level</div>
+      </div>
+    </div>
+    <ul class="bullet-list">
+      <li>Camera height matches the subject's eyes — neither looking up nor down</li>
+      <li>Most common angle in interviews, dialogue scenes, and studio anchor shots</li>
+      <li>Creates a sense of equality and directness between subject and viewer</li>
+      <li>Default angle when no deliberate high or low choice is evident</li>
+    </ul>
+    <div class="dashed-divider"></div>
+    <div class="rule-block">
+      <span class="rule-icon">Rule →</span>
+      <span class="rule-text">If the camera is roughly level with the subject's eyes with no clear upward or downward tilt, classify as Eye-Level.</span>
+    </div>
+    <div class="sport-badges">
+      <span class="sport-badge">News Interview</span>
+      <span class="sport-badge">Anchor Desk</span>
+      <span class="sport-badge">Dialogue Scene</span>
+      <span class="sport-badge">Documentary</span>
+    </div>
+  </div>
+
+  <!-- 02. High Angle -->
+  <div class="camera-card" id="ang-02">
+    <div class="card-header">
+      <div class="card-title-group">
+        <div class="card-number">Camera Angle 02</div>
+        <div class="card-title">High Angle</div>
+      </div>
+      <span class="pill pill-orange">Looking Down</span>
+    </div>
+    <div class="definition-block">
+      <p>The camera is positioned above the subject, looking down. This makes the subject appear smaller, weaker, or more vulnerable relative to the viewer.</p>
+    </div>
+    <div class="props-grid">
+      <div class="prop-item">
+        <div class="prop-label">Position</div>
+        <div class="prop-value">Above the subject, angled downward</div>
+      </div>
+      <div class="prop-item">
+        <div class="prop-label">Effect</div>
+        <div class="prop-value">Subject appears smaller, weaker, or vulnerable</div>
+      </div>
+      <div class="prop-item">
+        <div class="prop-label">Stability</div>
+        <div class="prop-value">Fixed, crane, or handheld</div>
+      </div>
+      <div class="prop-item">
+        <div class="prop-label">Framing</div>
+        <div class="prop-value">Looking down onto the subject, not straight down</div>
+      </div>
+    </div>
+    <ul class="bullet-list">
+      <li>Camera is placed higher than the subject and tilts downward toward them</li>
+      <li>Often used to convey vulnerability, isolation, or diminished power</li>
+      <li>Common in news footage of crowds, protests, or scene overviews</li>
+      <li>Subject is still seen at an angle — not directly from above</li>
+    </ul>
+    <div class="dashed-divider"></div>
+    <div class="rule-block">
+      <span class="rule-icon">Rule →</span>
+      <span class="rule-text">If the camera looks down at the subject from above but not directly overhead, classify as High Angle.</span>
+    </div>
+    <div class="dashed-divider"></div>
+    <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8F8984;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px;">What this angle is NOT</p>
+    <ul class="not-list">
+      <li>Not Overhead — the camera does not look straight down at a near-90° angle</li>
+      <li>Not Aerial — the shot is scene-specific, not a wide establishing view from great height</li>
+    </ul>
+    <div class="sport-badges">
+      <span class="sport-badge">Crowd Coverage</span>
+      <span class="sport-badge">Protest Footage</span>
+      <span class="sport-badge">Vulnerability Framing</span>
+    </div>
+  </div>
+
+  <!-- 03. Low Angle -->
+  <div class="camera-card" id="ang-03">
+    <div class="card-header">
+      <div class="card-title-group">
+        <div class="card-number">Camera Angle 03</div>
+        <div class="card-title">Low Angle</div>
+      </div>
+      <span class="pill pill-peach">Looking Up</span>
+    </div>
+    <div class="definition-block">
+      <p>The camera is positioned below the subject, looking up. This makes the subject appear larger, more powerful, or dominant.</p>
+    </div>
+    <div class="props-grid">
+      <div class="prop-item">
+        <div class="prop-label">Position</div>
+        <div class="prop-value">Below the subject, angled upward</div>
+      </div>
+      <div class="prop-item">
+        <div class="prop-label">Effect</div>
+        <div class="prop-value">Subject appears larger, powerful, dominant</div>
+      </div>
+      <div class="prop-item">
+        <div class="prop-label">Stability</div>
+        <div class="prop-value">Fixed or handheld</div>
+      </div>
+      <div class="prop-item">
+        <div class="prop-label">Framing</div>
+        <div class="prop-value">Looking up at the subject</div>
+      </div>
+    </div>
+    <ul class="bullet-list">
+      <li>Camera is placed lower than the subject and tilts upward toward them</li>
+      <li>Often used to convey authority, power, or intimidation</li>
+      <li>Common in political speeches, courtroom drama, or hero-framing shots</li>
+      <li>The subject dominates the frame relative to the background</li>
+    </ul>
+    <div class="dashed-divider"></div>
+    <div class="rule-block">
+      <span class="rule-icon">Rule →</span>
+      <span class="rule-text">If the camera is positioned below the subject and tilts upward, making the subject appear dominant, classify as Low Angle.</span>
+    </div>
+    <div class="sport-badges">
+      <span class="sport-badge">Political Speech</span>
+      <span class="sport-badge">Courtroom Drama</span>
+      <span class="sport-badge">Hero Framing</span>
+    </div>
+  </div>
+
+  <!-- 04. Dutch Angle -->
+  <div class="camera-card" id="ang-04" style="position:relative;overflow:hidden;">
+    <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#60E21B 0%,#FABA17 32.5%,#FFB592 69%,#FFB0CD 100%);"></div>
+    <div class="card-header" style="margin-top:8px;">
+      <div class="card-title-group">
+        <div class="card-number">Camera Angle 04</div>
+        <div class="card-title">Dutch Angle</div>
+      </div>
+      <span class="pill">Tilted</span>
+    </div>
+    <div class="definition-block">
+      <p>The camera is deliberately tilted off the horizontal axis, so the horizon line appears slanted rather than level.</p>
+    </div>
+    <div class="props-grid">
+      <div class="prop-item">
+        <div class="prop-label">Position</div>
+        <div class="prop-value">Camera roll axis tilted, not level with horizon</div>
+      </div>
+      <div class="prop-item">
+        <div class="prop-label">Effect</div>
+        <div class="prop-value">Tension, disorientation, unease</div>
+      </div>
+      <div class="prop-item">
+        <div class="prop-label">Stability</div>
+        <div class="prop-value">Fixed tilt — intentional, not accidental shake</div>
+      </div>
+      <div class="prop-item">
+        <div class="prop-label">Framing</div>
+        <div class="prop-value">Horizon line appears diagonal in frame</div>
+      </div>
+    </div>
+    <ul class="bullet-list">
+      <li>Horizontal lines in the frame (horizon, buildings, tables) appear slanted rather than level</li>
+      <li>Used deliberately to signal tension, instability, or psychological unease</li>
+      <li>Common in thriller, action, or breaking-news chaos coverage</li>
+      <li>Distinguish from camera shake — a Dutch Angle is a static tilt, not jitter</li>
+    </ul>
+    <div class="dashed-divider"></div>
+    <div class="rule-block">
+      <span class="rule-icon">Rule →</span>
+      <span class="rule-text">If the horizon or other horizontal reference lines are clearly slanted rather than level, classify as Dutch Angle.</span>
+    </div>
+    <div class="sport-badges">
+      <span class="sport-badge">Thriller</span>
+      <span class="sport-badge">Action Scene</span>
+      <span class="sport-badge">Breaking News Chaos</span>
+    </div>
+  </div>
+
+  <!-- 05. Overhead -->
+  <div class="camera-card" id="ang-05">
+    <div class="card-header">
+      <div class="card-title-group">
+        <div class="card-number">Camera Angle 05</div>
+        <div class="card-title">Overhead</div>
+      </div>
+      <span class="pill pill-orange">Top-Down</span>
+    </div>
+    <div class="definition-block">
+      <p>The camera is positioned directly above the subject, looking straight down — a close-range, top-down view within the scene, not a wide establishing shot from far above.</p>
+    </div>
+    <div class="props-grid">
+      <div class="prop-item">
+        <div class="prop-label">Position</div>
+        <div class="prop-value">Directly above, near-vertical downward angle</div>
+      </div>
+      <div class="prop-item">
+        <div class="prop-label">Effect</div>
+        <div class="prop-value">Graphic, abstract, top-down perspective</div>
+      </div>
+      <div class="prop-item">
+        <div class="prop-label">Stability</div>
+        <div class="prop-value">Fixed rig or mounted camera</div>
+      </div>
+      <div class="prop-item">
+        <div class="prop-label">Framing</div>
+        <div class="prop-value">Subject seen from directly above, near 90° downward</div>
+      </div>
+    </div>
+    <ul class="bullet-list">
+      <li>Camera looks almost straight down, close to a 90-degree angle</li>
+      <li>Flattens depth — often used for tabletop shots, choreography, or graphic compositions</li>
+      <li>Close-range and scene-specific, unlike a wide establishing view</li>
+    </ul>
+    <div class="dashed-divider"></div>
+    <div class="rule-block">
+      <span class="rule-icon">Rule →</span>
+      <span class="rule-text">If the camera looks nearly straight down at the subject from a relatively close range, classify as Overhead.</span>
+    </div>
+    <div class="dashed-divider"></div>
+    <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8F8984;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px;">What this angle is NOT</p>
+    <ul class="not-list">
+      <li>Not High Angle — the camera looks straight down, not at a partial downward angle</li>
+      <li>Not Aerial — the shot is close-range and scene-specific, not a wide environmental establishing view</li>
+    </ul>
+    <div class="sport-badges">
+      <span class="sport-badge">Tabletop Shot</span>
+      <span class="sport-badge">Choreography</span>
+      <span class="sport-badge">Graphic Composition</span>
+    </div>
+  </div>
+
+  <!-- 06. Aerial -->
+  <div class="camera-card" id="ang-06">
+    <div class="card-header">
+      <div class="card-title-group">
+        <div class="card-number">Camera Angle 06</div>
+        <div class="card-title">Aerial</div>
+      </div>
+      <span class="pill pill-pink">Establishing</span>
+    </div>
+    <div class="definition-block">
+      <p>A wide shot captured from significant height — via drone, helicopter, or crane — showing a broad view of the location or environment, not a specific subject up close.</p>
+    </div>
+    <div class="props-grid">
+      <div class="prop-item">
+        <div class="prop-label">Position</div>
+        <div class="prop-value">Significant height above the scene (drone, helicopter, crane)</div>
+      </div>
+      <div class="prop-item">
+        <div class="prop-label">Effect</div>
+        <div class="prop-value">Scale, geography, establishing context</div>
+      </div>
+      <div class="prop-item">
+        <div class="prop-label">Stability</div>
+        <div class="prop-value">Typically stabilized (drone / gimbal)</div>
+      </div>
+      <div class="prop-item">
+        <div class="prop-label">Framing</div>
+        <div class="prop-value">Wide view of environment; subjects appear small or absent</div>
+      </div>
+    </div>
+    <ul class="bullet-list">
+      <li>Captured from significant height, well above the immediate scene</li>
+      <li>Used to establish location, scale, or geography — stadiums, cityscapes, disaster areas</li>
+      <li>Subjects, if visible, appear small within a much larger environment</li>
+      <li>Common in news scene-setting shots and movie establishing shots</li>
+    </ul>
+    <div class="dashed-divider"></div>
+    <div class="rule-block">
+      <span class="rule-icon">Rule →</span>
+      <span class="rule-text">If the shot is from significant height and shows the broader environment rather than a close view of a subject, classify as Aerial.</span>
+    </div>
+    <div class="sport-badges">
+      <span class="sport-badge">Cityscape</span>
+      <span class="sport-badge">Disaster Coverage</span>
+      <span class="sport-badge">Movie Establishing Shot</span>
+    </div>
+  </div>
+
+  <hr class="gradient-divider" style="margin-top:48px;">
+
+  <!-- Multi-Angle Tagging Rule -->
+  <div class="section-label">Tagging Rule — Multi-Angle Segments</div>
+  <div class="camera-card" id="multi" style="position:relative;overflow:hidden;">
+    <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#60E21B 0%,#FABA17 32.5%,#FFB592 69%,#FFB0CD 100%);"></div>
+    <div class="card-header" style="margin-top:8px;">
+      <div class="card-title-group">
+        <div class="card-number">Special Case</div>
+        <div class="card-title">More Than One</div>
+      </div>
+      <span class="pill pill-neutral">Sequenced Tagging</span>
+    </div>
+    <div class="definition-block">
+      <p>Some segments do not hold a single angle for their full duration — the camera may physically move between angles (e.g. craning down from High Angle to Eye-Level), or the segment may contain an internal cut between two distinct angles. In these cases, do not force one tag onto the whole segment.</p>
+    </div>
+    <ul class="bullet-list">
+      <li>Select <strong>More Than One</strong> as the angle tag for the segment</li>
+      <li>List every angle that appears in the segment, in chronological order, using the format <strong>Angle 1 → Angle 2 → Angle 3</strong></li>
+      <li>If the same angle reappears later in the segment after switching away, list it again in its correct chronological position</li>
+      <li>If the segment holds a single angle for its entire duration — even with minor handheld movement — tag that single angle only, not More Than One</li>
+    </ul>
+    <div class="dashed-divider"></div>
+    <div class="rule-block">
+      <span class="rule-icon">Rule →</span>
+      <span class="rule-text">If the angle changes within a single segment — whether through camera movement or an internal cut — tag More Than One and list every angle in the order it appears, separated by →.</span>
+    </div>
+    <div class="dashed-divider"></div>
+    <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8F8984;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px;">Example Segments</p>
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div style="background:#fff;border-radius:12px;padding:16px 18px;">
+        <div style="font-size:14px;color:#1D1C1B;margin-bottom:10px;">Camera starts overhead on a crowd, then cranes down to eye-level as a reporter walks in.</div>
+        <div class="order-chip-row">
+          <span class="order-chip">More Than One</span>
+          <span class="order-arrow">—</span>
+          <span class="order-chip">Overhead</span>
+          <span class="order-arrow">→</span>
+          <span class="order-chip">Eye-Level</span>
+        </div>
+      </div>
+      <div style="background:#fff;border-radius:12px;padding:16px 18px;">
+        <div style="font-size:14px;color:#1D1C1B;margin-bottom:10px;">Interview begins eye-level; the camera tilts into a Dutch angle during a dramatic reveal.</div>
+        <div class="order-chip-row">
+          <span class="order-chip">More Than One</span>
+          <span class="order-arrow">—</span>
+          <span class="order-chip">Eye-Level</span>
+          <span class="order-arrow">→</span>
+          <span class="order-chip">Dutch Angle</span>
+        </div>
+      </div>
+      <div style="background:#fff;border-radius:12px;padding:16px 18px;">
+        <div style="font-size:14px;color:#1D1C1B;margin-bottom:10px;">Aerial establishing shot of a stadium cuts to a low-angle hero shot of a player.</div>
+        <div class="order-chip-row">
+          <span class="order-chip">More Than One</span>
+          <span class="order-arrow">—</span>
+          <span class="order-chip">Aerial</span>
+          <span class="order-arrow">→</span>
+          <span class="order-chip">Low Angle</span>
+        </div>
+      </div>
+      <div style="background:#fff;border-radius:12px;padding:16px 18px;">
+        <div style="font-size:14px;color:#1D1C1B;margin-bottom:10px;">Static low-angle shot throughout, with only minor handheld movement and no cut.</div>
+        <div class="order-chip-row">
+          <span class="order-chip" style="background:#BFF3A4;color:#1D1C1B;">Low Angle</span>
+          <span class="order-arrow">(single angle — not More Than One)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Reference Table -->
+  <div class="section-label">Quick Reference — All 6 Angles</div>
+  <div class="camera-card">
+    <div style="margin-bottom:20px;">
+      <span class="pill pill-neutral">Comparison Table</span>
+    </div>
+    <div style="overflow-x:auto;">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Angle</th>
+            <th>Camera Position</th>
+            <th>Primary Effect</th>
+            <th>Typical Usage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8F8984;">01</td>
+            <td class="row-label">Eye-Level</td>
+            <td>At subject's eye height</td>
+            <td>Neutral, natural, relatable</td>
+            <td>Interviews, anchor desks, dialogue</td>
+          </tr>
+          <tr>
+            <td style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8F8984;">02</td>
+            <td class="row-label">High Angle</td>
+            <td>Above subject, angled down</td>
+            <td>Vulnerability, diminished power</td>
+            <td>Crowds, protests, overviews</td>
+          </tr>
+          <tr>
+            <td style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8F8984;">03</td>
+            <td class="row-label">Low Angle</td>
+            <td>Below subject, angled up</td>
+            <td>Power, dominance, authority</td>
+            <td>Speeches, courtroom, hero shots</td>
+          </tr>
+          <tr style="background:#BFF3A4;">
+            <td style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#45423F;">04</td>
+            <td class="row-label">Dutch Angle</td>
+            <td>Rolled off horizontal axis</td>
+            <td>Tension, disorientation, unease</td>
+            <td>Thriller, action, chaos coverage</td>
+          </tr>
+          <tr>
+            <td style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8F8984;">05</td>
+            <td class="row-label">Overhead</td>
+            <td>Directly above, near-vertical</td>
+            <td>Graphic, abstract, top-down</td>
+            <td>Tabletop shots, choreography</td>
+          </tr>
+          <tr>
+            <td style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8F8984;">06</td>
+            <td class="row-label">Aerial</td>
+            <td>Significant height (drone / crane)</td>
+            <td>Scale, geography, establishing</td>
+            <td>Cityscapes, disaster coverage</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span class="footer-text">TwelveLabs · Data &amp; Annotation Team</span>
+    <span class="footer-text">News &amp; Movie Camera Angle Guideline · V1.0</span>
+  </div>
+
+</div>
+</body>
+</html>
