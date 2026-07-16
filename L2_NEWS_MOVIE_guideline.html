@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shot Type Annotation Guideline — News &amp; Film</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'Milling';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://d2n8i6crd2t3p1.cloudfront.net/font/milling/205TF-Milling-Duplex1mm.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Milling';
+  font-style: normal;
+  font-weight: 700;
+  src: url('https://d2n8i6crd2t3p1.cloudfront.net/font/milling/205TF-Milling-Triplex1mm.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Pretendard Variable';
+  font-style: normal;
+  font-weight: 45 920;
+  font-display: swap;
+  src: url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/woff2/PretendardVariable.woff2') format('woff2-variations');
+}
+*, *::before, *::after { box-sizing: border-box; }
+h1, h2, h3, h4, h5, h6, p, ul, ol, li, figure, blockquote, hr { margin: 0; padding: 0; }
+table, td, th { margin: 0; padding: 0; border-collapse: collapse; }
+img { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+
+body {
+  font-family: 'Milling', 'Noto Sans', Helvetica, Arial, sans-serif;
+  background: #F4F3F3;
+  color: #1D1C1B;
+  margin: 0;
+  padding: 48px 24px;
+}
+
+.page {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+/* Cover */
+.cover {
+  background: #1D1C1B;
+  border-radius: 24px;
+  padding: 56px 48px 48px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.cover-gradient {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #60E21B 0%, #FABA17 32.5%, #FFB592 69%, #FFB0CD 100%);
+}
+.cover-meta {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #60E21B;
+  margin-bottom: 24px;
+}
+.cover h1 {
+  font-size: 48px;
+  font-weight: 400;
+  color: #F4F3F3;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+.cover p {
+  font-size: 16px;
+  color: #9B9895;
+  line-height: 1.6;
+  max-width: 520px;
+}
+.cover-logo {
+  color: #F4F3F3;
+  margin-bottom: 40px;
+}
+
+/* Section label */
+.section-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #8F8984;
+  margin: 48px 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed #D3D1CF;
+}
+
+/* Tag header */
+.tag-header {
+  background: #ECECEC;
+  border-radius: 16px;
+  padding: 24px 32px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.tag-number {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: #BFF3A4;
+  color: #1D1C1B;
+  padding: 5px 14px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.tag-header h2 {
+  font-size: 22px;
+  font-weight: 400;
+}
+.tag-header p {
+  font-size: 14px;
+  color: #8F8984;
+  margin-top: 2px;
+}
+
+/* Shot card */
+.shot-card {
+  background: #ECECEC;
+  border-radius: 24px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.shot-card-inner {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  min-height: 200px;
+}
+.shot-image {
+  position: relative;
+  overflow: hidden;
+  background: #1D1C1B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.shot-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+.shot-image-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+  background: #D3D1CF;
+  color: #8F8984;
+  font-size: 13px;
+  font-family: 'IBM Plex Mono', monospace;
+}
+.shot-content {
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.shot-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.shot-code {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: #1D1C1B;
+  color: #F4F3F3;
+  padding: 5px 14px;
+  border-radius: 999px;
+  white-space: nowrap;
+  margin-top: 3px;
+}
+.shot-title {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.1;
+}
+.shot-subtitle {
+  font-size: 14px;
+  color: #8F8984;
+  margin-top: 2px;
+}
+.shot-desc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #1D1C1B;
+  margin-bottom: 16px;
+}
+.shot-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.shot-bullets li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #45423F;
+}
+.shot-bullets li::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #60E21B;
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+.shot-rule {
+  margin-top: 20px;
+  padding: 14px 18px;
+  background: #F4F3F3;
+  border-radius: 12px;
+  border-left: 3px solid #60E21B;
+}
+.shot-rule-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #60E21B;
+  margin-bottom: 4px;
+}
+.shot-rule p {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #1D1C1B;
+}
+
+/* Comparison table */
+.comparison-table {
+  background: #ECECEC;
+  border-radius: 24px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.comparison-table table {
+  width: 100%;
+}
+.comparison-table th {
+  background: #1D1C1B;
+  color: #F4F3F3;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 14px 20px;
+  text-align: left;
+  font-weight: 400;
+}
+.comparison-table td {
+  padding: 14px 20px;
+  font-size: 14px;
+  border-bottom: 1px dashed #D3D1CF;
+  vertical-align: top;
+}
+.comparison-table tr:last-child td {
+  border-bottom: none;
+}
+.comparison-table tr:nth-child(even) td {
+  background: #F4F3F3;
+}
+.code-pill {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  background: #1D1C1B;
+  color: #F4F3F3;
+  padding: 3px 10px;
+  border-radius: 999px;
+  display: inline-block;
+}
+
+/* Decision list */
+.decision-list {
+  display: flex;
+  flex-direction: column;
+}
+.decision-step {
+  display: flex;
+  gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px dashed #D3D1CF;
+}
+.decision-step:last-child {
+  border-bottom: none;
+}
+.decision-number {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #60E21B;
+  color: #1D1C1B;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 700;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.decision-step p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #45423F;
+}
+.decision-step p strong {
+  color: #1D1C1B;
+}
+
+/* Edge case */
+.edge-case {
+  padding: 20px 0;
+  border-bottom: 1px dashed #D3D1CF;
+}
+.edge-case:last-child {
+  border-bottom: none;
+}
+.edge-case h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.edge-case p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #45423F;
+}
+
+/* Footer */
+.footer {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px dashed #D3D1CF;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-left {
+  font-size: 13px;
+  color: #8F8984;
+}
+.footer-right {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: #8F8984;
+  letter-spacing: 1px;
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- COVER -->
+  <div class="cover">
+    <div class="cover-logo">
+      <svg viewBox="0 0 179 36" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:140px;height:auto;">
+        <g>
+          <rect x="10.78" y="12.36" width="15.81" height="2.14" rx="0.63" fill="currentColor"/>
+          <rect x="0.00" y="12.36" width="8.66" height="2.14" rx="0.63" fill="currentColor"/>
+          <rect x="30.51" y="12.36" width="9.89" height="2.14" rx="0.63" fill="currentColor"/>
+          <rect x="31.93" y="9.28" width="8.47" height="2.15" rx="0.63" fill="currentColor"/>
+          <rect x="41.51" y="9.28" width="6.73" height="2.15" rx="0.63" fill="currentColor"/>
+          <rect x="38.65" y="6.14" width="7.66" height="2.15" rx="0.63" fill="currentColor"/>
+          <rect x="41.08" y="3.07" width="2.24" height="2.15" rx="0.63" fill="currentColor"/>
+          <rect x="18.26" y="27.71" width="3.90" height="2.15" rx="0.63" fill="currentColor"/>
+          <rect x="25.02" y="27.71" width="2.56" height="2.15" rx="0.63" fill="currentColor"/>
+          <rect x="28.74" y="27.71" width="6.88" height="2.15" rx="0.63" fill="currentColor"/>
+          <rect x="32.20" y="24.64" width="2.87" height="2.14" rx="0.63" fill="currentColor"/>
+          <rect x="12.88" y="27.71" width="2.24" height="2.15" rx="0.63" fill="currentColor"/>
+          <rect x="23.29" y="30.78" width="2.24" height="2.15" rx="0.63" fill="currentColor"/>
+          <rect x="21.09" y="33.86" width="2.15" height="2.14" rx="0.63" fill="currentColor"/>
+          <rect x="29.58" y="0.00" width="2.80" height="2.15" rx="0.63" fill="currentColor"/>
+          <rect x="13.71" y="9.28" width="7.14" height="2.15" rx="0.63" fill="currentColor"/>
+          <rect x="26.96" y="3.07" width="4.32" height="2.15" rx="0.63" fill="currentColor"/>
+          <rect x="24.29" y="6.14" width="6.99" height="2.15" rx="0.63" fill="currentColor"/>
+          <rect x="46.04" y="12.36" width="4.08" height="2.14" rx="0.63" fill="currentColor"/>
+          <rect x="7.52" y="15.43" width="20.15" height="2.15" rx="0.63" fill="currentColor"/>
+          <rect x="25.83" y="21.57" width="7.87" height="2.15" rx="0.63" fill="currentColor"/>
+          <rect x="10.78" y="18.50" width="25.62" height="2.15" rx="0.63" fill="currentColor"/>
+          <rect x="6.85" y="21.57" width="9.52" height="2.15" rx="0.63" fill="currentColor"/>
+          <rect x="15.56" y="24.64" width="3.11" height="2.14" rx="0.63" fill="currentColor"/>
+          <rect x="26.58" y="24.64" width="3.38" height="2.14" rx="0.63" fill="currentColor"/>
+          <rect x="9.79" y="24.64" width="3.17" height="2.14" rx="0.63" fill="currentColor"/>
+          <rect x="30.51" y="15.43" width="8.14" height="2.15" rx="0.63" fill="currentColor"/>
+          <rect x="32.40" y="6.12" width="2.24" height="2.15" rx="0.63" fill="currentColor"/>
+        </g>
+        <g transform="translate(58.97 9.09) scale(1)">
+          <path d="M0.700246 2.1445C0.24618 2.1445 0 1.89832 0 1.44426V0.700246C0 0.24618 0.24618 0 0.700246 0H12.6646C13.1187 0 13.3649 0.24618 13.3649 0.700246V1.44426C13.3649 1.89832 13.1187 2.1445 12.6646 2.1445H7.82306V16.8059C7.82306 17.26 7.57688 17.5062 7.12282 17.5062H6.24751C5.79344 17.5062 5.54726 17.26 5.54726 16.8059V2.1445H0.700246Z" fill="currentColor"/>
+          <path d="M14.5079 17.506C14.0976 17.506 13.8405 17.32 13.7202 16.9262L10.3502 6.03404C10.2408 5.68939 10.2463 5.45962 10.3612 5.22438C10.4761 5.00008 10.7004 4.90161 11.0942 4.90161H11.7179C12.1337 4.90161 12.3853 5.08761 12.5057 5.48697L15.241 14.53L15.2903 14.7488L15.3395 14.5191L18.1514 5.4815C18.2718 5.08761 18.5289 4.90161 18.9392 4.90161H20.2084C20.6187 4.90161 20.8758 5.08761 20.9962 5.4815L23.8081 14.5191L23.8628 14.7652L23.9175 14.5245L26.6528 5.48697C26.7732 5.08761 27.0248 4.90161 27.4406 4.90161H28.0533C28.4472 4.90161 28.6715 5.00008 28.7864 5.22438C28.9013 5.45962 28.9068 5.68939 28.7973 6.03404L25.4274 16.9262C25.3071 17.32 25.0499 17.506 24.6396 17.506H23.2337C22.8234 17.506 22.5662 17.32 22.4459 16.9262L19.6394 7.8886L19.5683 7.60412L19.4972 7.8886L16.6962 16.9262C16.5704 17.32 16.3133 17.506 15.903 17.506H14.5079Z" fill="currentColor"/>
+          <path d="M35.6818 17.8126C32.0274 17.8126 29.582 15.2086 29.582 11.122C29.582 7.07914 31.9891 4.59546 35.4739 4.59546C39.0025 4.59546 41.1963 7.13385 41.1963 10.739V11.0071C41.1963 11.4612 40.9501 11.7073 40.496 11.7073H31.8359C32.0274 14.2184 33.4717 15.7392 35.6818 15.7392C37.2191 15.7392 38.1546 15.1374 38.5321 14.0871C38.6743 13.6877 38.8822 13.4798 39.3034 13.4798H40.1076C40.5781 13.4798 40.8571 13.7424 40.775 14.2074C40.4085 16.341 38.4172 17.8126 35.6818 17.8126ZM31.9235 9.81995H38.9259C38.6688 7.7958 37.4215 6.55396 35.4739 6.55396C33.5866 6.55396 32.2955 7.76845 31.9235 9.81995Z" fill="currentColor"/>
+          <path d="M43.209 0.700246C43.209 0.24618 43.4552 0 43.9092 0H44.7408C45.1948 0 45.441 0.24618 45.441 0.700246V16.8059C45.441 17.26 45.1948 17.5062 44.7408 17.5062H43.9092C43.4552 17.5062 43.209 17.26 43.209 16.8059V0.700246Z" fill="currentColor"/>
+          <path d="M51.9967 17.506C51.5918 17.506 51.3402 17.331 51.1925 16.9535L47.0676 6.05045C46.9363 5.71127 46.9308 5.47603 47.0512 5.23532C47.1661 5.00555 47.3958 4.90161 47.7897 4.90161H48.4024C48.8073 4.90161 49.0644 5.07667 49.2066 5.45962L52.5602 14.4753L52.7462 15.0552L52.9322 14.4753L56.2857 5.45962C56.4279 5.07667 56.685 4.90161 57.0899 4.90161H57.7026C58.0965 4.90161 58.3262 5.00555 58.4411 5.23532C58.5615 5.47603 58.556 5.71127 58.4247 6.05045L54.2998 16.9535C54.1521 17.331 53.9005 17.506 53.4956 17.506H51.9967Z" fill="currentColor"/>
+          <path d="M65.176 17.8126C61.5216 17.8126 59.0762 15.2086 59.0762 11.122C59.0762 7.07914 61.4833 4.59546 64.9681 4.59546C68.4967 4.59546 70.6904 7.13385 70.6904 10.739V11.0071C70.6904 11.4612 70.4442 11.7073 69.9902 11.7073H61.3301C61.5216 14.2184 62.9658 15.7392 65.176 15.7392C66.7132 15.7392 67.6487 15.1374 68.0262 14.0871C68.1684 13.6877 68.3763 13.4798 68.7976 13.4798H69.6018C70.0722 13.4798 70.3512 13.7424 70.2692 14.2074C69.9026 16.341 67.9113 17.8126 65.176 17.8126ZM61.4176 9.81995H68.4201C68.163 7.7958 66.9156 6.55396 64.9681 6.55396C63.0807 6.55396 61.7896 7.76845 61.4176 9.81995Z" fill="currentColor"/>
+          <path d="M73.5518 17.5062C73.0977 17.5062 72.8516 17.26 72.8516 16.8059V0.700246C72.8516 0.24618 73.0977 0 73.5518 0H74.4271C74.8812 0 75.1274 0.24618 75.1274 0.700246V15.3507H82.9832C83.4373 15.3507 83.6835 15.5969 83.6835 16.051V16.8059C83.6835 17.26 83.4373 17.5062 82.9832 17.5062H73.5518Z" fill="currentColor"/>
+          <path d="M89.657 4.59546C93.0488 4.59546 94.5861 6.20384 94.5806 8.80241L94.5696 13.6002C94.5696 14.5193 94.6025 15.8377 94.7228 16.7568C94.783 17.2327 94.5806 17.5062 94.0992 17.5062H93.3552C92.923 17.5062 92.6768 17.3421 92.633 17.0084L92.5072 16.062C91.8398 17.1616 90.5323 17.7251 88.9294 17.7251C86.0354 17.7251 84.252 16.0182 84.252 13.6932C84.252 11.6581 85.6853 10.4053 88.1252 10.2303L91.6866 9.9786C92.3321 9.93484 92.3595 9.87466 92.3595 9.27288V8.74223C92.3595 7.34174 91.5115 6.63055 89.657 6.63055C87.8462 6.63055 87.042 7.32532 86.9654 8.2991C86.9326 8.75864 86.7739 9.00482 86.3089 9.00482H85.4555C85.0124 9.00482 84.7334 8.78052 84.7279 8.34287C84.7115 6.29684 86.2159 4.59546 89.657 4.59546ZM86.5059 13.7151C86.5059 14.9405 87.507 15.8213 89.2139 15.8213C91.2107 15.8213 92.3595 14.6177 92.3595 12.8124V11.6253C92.0969 11.7183 91.7851 11.7839 91.4295 11.8167L88.3112 12.1122C87.1733 12.2216 86.5059 12.6592 86.5059 13.7151Z" fill="currentColor"/>
+          <path d="M99.5039 16.8059C99.5039 17.26 99.2577 17.5062 98.8037 17.5062H97.9776C97.5235 17.5062 97.2773 17.26 97.2773 16.8059V0.700246C97.2773 0.24618 97.5235 0 97.9776 0H98.8091C99.2632 0 99.5094 0.24618 99.5094 0.700246V6.47181C100.248 5.31749 101.572 4.59536 103.268 4.59536C106.506 4.59536 108.963 7.16111 108.963 11.2039C108.963 15.2468 106.506 17.8125 103.268 17.8125C101.566 17.8125 100.242 17.0904 99.5039 15.9306V16.8059ZM106.709 11.2039C106.709 8.28807 105.04 6.67422 103.054 6.67422C101.069 6.67422 99.3781 8.28807 99.3781 11.2039C99.3781 14.1198 101.069 15.7337 103.054 15.7337C105.04 15.7337 106.709 14.1198 106.709 11.2039Z" fill="currentColor"/>
+          <path d="M115.418 17.8126C111.474 17.8126 110.369 15.7119 110.391 13.9613C110.396 13.5236 110.675 13.3048 111.119 13.3048H111.906C112.36 13.3048 112.557 13.5455 112.601 13.9995C112.716 15.0827 113.427 15.7502 115.391 15.7502C117.404 15.7502 118.302 15.0335 118.302 13.9284C118.302 12.9546 117.749 12.5991 116.376 12.3638L114.013 11.959C112.032 11.6198 110.719 10.5038 110.719 8.50152C110.719 6.2476 112.393 4.59546 115.49 4.59546C118.695 4.59546 120.364 6.27496 120.337 8.23346C120.331 8.66564 120.041 8.88447 119.604 8.88447H118.805C118.351 8.88447 118.187 8.64376 118.121 8.20063C118.006 7.3855 117.339 6.64149 115.49 6.64149C113.651 6.64149 112.929 7.41833 112.929 8.42493C112.929 9.29477 113.433 9.67771 114.691 9.90201L117.054 10.3178C119.1 10.6788 120.523 11.68 120.523 13.8245C120.523 15.8268 119.314 17.8126 115.418 17.8126Z" fill="currentColor"/>
+        </g>
+      </svg>
+    </div>
+    <div class="cover-meta">Annotation Guideline · News &amp; Film · Shot Type</div>
+    <h1>Shot Type<br>Classification</h1>
+    <p>Multi-tag annotation system for consistent, searchable shot type classification across news, film, and movie video content. Apply these labels when annotating broadcast footage, interviews, and narrative scenes.</p>
+    <div class="cover-gradient"></div>
+  </div>
+
+  <!-- SYSTEM OVERVIEW -->
+  <div class="section-label">System Overview</div>
+  <div class="tag-header">
+    <div>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;">
+        <span class="tag-number">Tagging Structure</span>
+        <h2>Every shot gets two tags</h2>
+      </div>
+      <p>Each shot must be tagged with exactly one tag from each category. Both tags are required — never leave one blank.</p>
+    </div>
+  </div>
+  <div class="shot-card">
+    <div style="padding: 32px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div style="background:#F4F3F3;border-radius:16px;padding:24px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+            <span class="code-pill">Tag 1</span>
+            <span style="font-size:16px;font-weight:700;">Framing</span>
+          </div>
+          <p style="font-size:14px;line-height:1.6;color:#45423F;margin-bottom:14px;">How the camera frames the subject — defined by where the frame cuts off on the body, or how wide the view is.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <span class="code-pill" style="background:#ECECEC;color:#1D1C1B;">Extreme Close-Up</span>
+            <span class="code-pill" style="background:#ECECEC;color:#1D1C1B;">Close-Up</span>
+            <span class="code-pill" style="background:#ECECEC;color:#1D1C1B;">Medium</span>
+            <span class="code-pill" style="background:#ECECEC;color:#1D1C1B;">Full</span>
+            <span class="code-pill" style="background:#ECECEC;color:#1D1C1B;">Master</span>
+            <span class="code-pill" style="background:#ECECEC;color:#1D1C1B;">Moving Master</span>
+            <span class="code-pill" style="background:#ECECEC;color:#1D1C1B;">POV</span>
+            <span class="code-pill" style="background:#ECECEC;color:#1D1C1B;">Insert</span>
+          </div>
+        </div>
+        <div style="background:#F4F3F3;border-radius:16px;padding:24px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+            <span class="code-pill">Tag 2</span>
+            <span style="font-size:16px;font-weight:700;">Composition</span>
+          </div>
+          <p style="font-size:14px;line-height:1.6;color:#45423F;margin-bottom:14px;">How many subjects appear in the frame and what spatial relationship they have to each other and the camera.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <span class="code-pill" style="background:#ECECEC;color:#1D1C1B;">Single</span>
+            <span class="code-pill" style="background:#ECECEC;color:#1D1C1B;">Dirty Single</span>
+            <span class="code-pill" style="background:#ECECEC;color:#1D1C1B;">OTS</span>
+            <span class="code-pill" style="background:#ECECEC;color:#1D1C1B;">Two-Shot</span>
+            <span class="code-pill" style="background:#ECECEC;color:#1D1C1B;">Three-Shot</span>
+            <span class="code-pill" style="background:#ECECEC;color:#1D1C1B;">Group</span>
+            <span class="code-pill" style="background:#ECECEC;color:#1D1C1B;">N/A</span>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:20px;padding:14px 18px;background:#F4F3F3;border-radius:12px;border-left:3px solid #FABA17;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#7D5D0C;margin-bottom:4px;">When to use Composition: N/A</div>
+        <p style="font-size:13px;line-height:1.5;">Use N/A for the Composition tag when the shot contains no human subjects (Insert shots, object close-ups, scenery) or when the framing tag is POV. For Master and Moving Master shots where subjects are incidental to the environment, N/A is also acceptable.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DECISION PROCESS -->
+  <div class="section-label">Decision Process</div>
+  <div class="shot-card">
+    <div style="padding: 8px 32px;">
+      <div class="decision-list">
+        <div class="decision-step">
+          <div class="decision-number">1</div>
+          <p><strong>Is the shot a close-up of an object or story-relevant detail (not a person)?</strong><br>→ Tag 1: Insert | Tag 2: N/A — stop here.</p>
+        </div>
+        <div class="decision-step">
+          <div class="decision-number">2</div>
+          <p><strong>Is it a wide shot with active camera movement</strong> (pan, track, dolly) maintaining a wide view throughout?<br>→ Tag 1: Moving Master | Tag 2: determine composition below.</p>
+        </div>
+        <div class="decision-step">
+          <div class="decision-number">3</div>
+          <p><strong>Determine Tag 1 (Framing)</strong> — where does the frame cut off?<br>
+          Only a fragment visible (eyes, hands) → Extreme Close-Up<br>
+          Chest and up → Close-Up<br>
+          Waist and up → Medium<br>
+          Head to toe, subject is focal point → Full<br>
+          Wide, environment equally prominent → Master<br>
+          Subject's POV perspective → POV</p>
+        </div>
+        <div class="decision-step">
+          <div class="decision-number">4</div>
+          <p><strong>Determine Tag 2 (Composition)</strong> — how many subjects, and how are they arranged?<br>
+          One subject, clean frame → Single<br>
+          One subject dominant, another partially at frame edge → Dirty Single<br>
+          Camera over one person's shoulder looking at another → OTS<br>
+          Exactly 2 subjects, roughly equal weight → Two-Shot<br>
+          Exactly 3 subjects, roughly equal weight → Three-Shot<br>
+          4 or more subjects, roughly equal weight → Group<br>
+          No human subjects in frame → N/A</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAG 1 SECTION -->
+  <div class="section-label">Tag 1 — Framing</div>
+
+  <div class="tag-header">
+    <div>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;">
+        <span class="tag-number">Tag 1</span>
+        <h2>Framing</h2>
+      </div>
+      <p>Select the one tag that best describes where the camera cuts off the primary subject.</p>
+    </div>
+  </div>
+
+  <!-- ECU -->
+  <div class="shot-card">
+    <div class="shot-card-inner">
+      <div class="shot-image">
+        <div class="shot-image-placeholder">
+          <div style="font-size:28px;font-weight:700;color:#1D1C1B;">ECU</div>
+          <div>Reference image</div>
+        </div>
+      </div>
+      <div class="shot-content">
+        <div>
+          <div class="shot-header">
+            <span class="shot-code">ECU</span>
+            <div>
+              <div class="shot-title">Extreme Close-Up</div>
+              <div class="shot-subtitle">Fragment of subject only</div>
+            </div>
+          </div>
+          <p class="shot-desc">A shot isolating a very specific detail — eyes, mouth, hands, feet — where the full subject is not visible.</p>
+          <ul class="shot-bullets">
+            <li>Only a fragment of the subject fills the frame</li>
+            <li>No broader context is visible</li>
+            <li>Used for dramatic emphasis or critical detail</li>
+          </ul>
+        </div>
+        <div class="shot-rule">
+          <div class="shot-rule-label">Rule</div>
+          <p>If you cannot identify the full subject and only one specific body part or detail fills the frame, it's an ECU.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CU -->
+  <div class="shot-card">
+    <div class="shot-card-inner">
+      <div class="shot-image">
+        <div class="shot-image-placeholder">
+          <div style="font-size:28px;font-weight:700;color:#1D1C1B;">CU</div>
+          <div>Reference image</div>
+        </div>
+      </div>
+      <div class="shot-content">
+        <div>
+          <div class="shot-header">
+            <span class="shot-code">CU</span>
+            <div>
+              <div class="shot-title">Close-Up</div>
+              <div class="shot-subtitle">Chest and up framing</div>
+            </div>
+          </div>
+          <p class="shot-desc">A shot framing the subject from approximately the chest up, centering attention on facial expression or a specific object.</p>
+          <ul class="shot-bullets">
+            <li>Background is largely absent or out of focus</li>
+            <li>Facial expressions dominate for people; a specific detail fills the frame for objects</li>
+            <li>A partially visible secondary figure at the edge doesn't change the classification</li>
+            <li>In news, draws attention to facial expressions in interviews or critical field details</li>
+          </ul>
+        </div>
+        <div class="shot-rule">
+          <div class="shot-rule-label">Rule</div>
+          <p>If the primary subject is framed from the chest up or closer and clearly dominates the frame, it's a Close-Up. Do not reclassify as Two-Shot unless the secondary subject occupies equal visual weight.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Medium -->
+  <div class="shot-card">
+    <div class="shot-card-inner">
+      <div class="shot-image">
+        <div class="shot-image-placeholder">
+          <div style="font-size:28px;font-weight:700;color:#1D1C1B;">MED</div>
+          <div>Reference image</div>
+        </div>
+      </div>
+      <div class="shot-content">
+        <div>
+          <div class="shot-header">
+            <span class="shot-code">Medium</span>
+            <div>
+              <div class="shot-title">Medium</div>
+              <div class="shot-subtitle">Waist-up framing</div>
+            </div>
+          </div>
+          <p class="shot-desc">A shot framing one or more subjects from approximately the waist up, balancing subject detail with some environmental context.</p>
+          <ul class="shot-bullets">
+            <li>Frame cuts at the waist or mid-torso</li>
+            <li>Upper body and facial expressions are clearly readable</li>
+            <li>Applies regardless of subject count — use Tag 2 to specify how many</li>
+            <li>In news, commonly includes reporter-interviewee scenes and anchor shots</li>
+          </ul>
+        </div>
+        <div class="shot-rule">
+          <div class="shot-rule-label">Rule</div>
+          <p>If subjects are visible from the waist up and facial expressions are readable, it's a Medium. Use the Composition tag to specify how many subjects appear.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Full -->
+  <div class="shot-card">
+    <div class="shot-card-inner">
+      <div class="shot-image">
+        <div class="shot-image-placeholder">
+          <div style="font-size:28px;font-weight:700;color:#1D1C1B;">FULL</div>
+          <div>Reference image</div>
+        </div>
+      </div>
+      <div class="shot-content">
+        <div>
+          <div class="shot-header">
+            <span class="shot-code">Full</span>
+            <div>
+              <div class="shot-title">Full</div>
+              <div class="shot-subtitle">Head-to-toe framing</div>
+            </div>
+          </div>
+          <p class="shot-desc">A shot framing the subject from head to toe, with the subject's complete figure as the focal point.</p>
+          <ul class="shot-bullets">
+            <li>The complete body is visible</li>
+            <li>Background provides spatial context but does not compete with the subject as focal point</li>
+            <li>Common when capturing full-body action or movement — walking, gesturing, exiting a vehicle</li>
+            <li>If the feet or head are cut off, reclassify as Medium</li>
+          </ul>
+        </div>
+        <div class="shot-rule">
+          <div class="shot-rule-label">Rule</div>
+          <p>If one or more subjects are visible head to toe and their posture or movement is the clear focal point, it's a Full. If the environment becomes equally prominent, consider Master instead.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Master -->
+  <div class="shot-card">
+    <div class="shot-card-inner">
+      <div class="shot-image">
+        <div class="shot-image-placeholder">
+          <div style="font-size:28px;font-weight:700;color:#1D1C1B;">MSTR</div>
+          <div>Reference image</div>
+        </div>
+      </div>
+      <div class="shot-content">
+        <div>
+          <div class="shot-header">
+            <span class="shot-code">Master</span>
+            <div>
+              <div class="shot-title">Master</div>
+              <div class="shot-subtitle">Wide, scene-establishing</div>
+            </div>
+          </div>
+          <p class="shot-desc">A wide shot establishing the entire scene — environment, atmosphere, and all subjects in spatial relation to each other.</p>
+          <ul class="shot-bullets">
+            <li>Environment and setting are as prominent as any individual subject</li>
+            <li>Individual subjects do not need to be fully in frame</li>
+            <li>Establishes overall space rather than highlighting one person's action</li>
+            <li>Includes studio-wide views where an anchor faces a large monitor (single undivided camera)</li>
+          </ul>
+        </div>
+        <div class="shot-rule">
+          <div class="shot-rule-label">Rule</div>
+          <p>Ask — "Is this shot showing a person's action, or showing the space they're in?" If the space is the point, it's a Master. If a subject's full-body action is the clear focal point, it's a Full.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Moving Master -->
+  <div class="shot-card">
+    <div class="shot-card-inner">
+      <div class="shot-image">
+        <div class="shot-image-placeholder">
+          <div style="font-size:22px;font-weight:700;color:#1D1C1B;">MOV MSTR</div>
+          <div>Reference image</div>
+        </div>
+      </div>
+      <div class="shot-content">
+        <div>
+          <div class="shot-header">
+            <span class="shot-code">Moving Master</span>
+            <div>
+              <div class="shot-title">Moving Master</div>
+              <div class="shot-subtitle">Wide shot, active camera movement</div>
+            </div>
+          </div>
+          <p class="shot-desc">A master shot where the camera actively moves (pan, track, dolly) while maintaining a wide view of the scene throughout.</p>
+          <ul class="shot-bullets">
+            <li>Wide scene-establishing framing is maintained throughout the movement</li>
+            <li>Common when a reporter or subject walks through a location as the camera follows alongside</li>
+            <li>If framing shifts to isolate a single subject, end the segment and start a new one</li>
+          </ul>
+        </div>
+        <div class="shot-rule">
+          <div class="shot-rule-label">Rule</div>
+          <p>Wide view + active camera movement following the action = Moving Master. If it stops being wide, end the segment.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POV -->
+  <div class="shot-card">
+    <div class="shot-card-inner">
+      <div class="shot-image">
+        <div class="shot-image-placeholder">
+          <div style="font-size:28px;font-weight:700;color:#1D1C1B;">POV</div>
+          <div>Reference image</div>
+        </div>
+      </div>
+      <div class="shot-content">
+        <div>
+          <div class="shot-header">
+            <span class="shot-code">POV</span>
+            <div>
+              <div class="shot-title">POV</div>
+              <div class="shot-subtitle">Subject's visual perspective</div>
+            </div>
+          </div>
+          <p class="shot-desc">A shot that shows what a character is seeing from their perspective, as if the camera is their eyes.</p>
+          <ul class="shot-bullets">
+            <li>Camera mimics what a character sees through their eyes</li>
+            <li>The shot moves and orients as if following a character's gaze</li>
+            <li>Always paired with Composition: N/A</li>
+          </ul>
+        </div>
+        <div class="shot-rule">
+          <div class="shot-rule-label">Rule</div>
+          <p>If the shot moves as if it's someone's gaze or directly represents a character's visual perspective, it's a POV. Use Composition: N/A.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Insert -->
+  <div class="shot-card">
+    <div class="shot-card-inner">
+      <div class="shot-image">
+        <div class="shot-image-placeholder">
+          <div style="font-size:28px;font-weight:700;color:#1D1C1B;">INS</div>
+          <div>Reference image</div>
+        </div>
+      </div>
+      <div class="shot-content">
+        <div>
+          <div class="shot-header">
+            <span class="shot-code">Insert</span>
+            <div>
+              <div class="shot-title">Insert</div>
+              <div class="shot-subtitle">Object or detail close-up</div>
+            </div>
+          </div>
+          <p class="shot-desc">A close-up shot of a story-relevant object or detail — a letter, phone screen, document, evidence item.</p>
+          <ul class="shot-bullets">
+            <li>Isolates and emphasizes a specific object or text detail with narrative or informational importance</li>
+            <li>No human subject is the focal point</li>
+            <li>Always paired with Composition: N/A</li>
+          </ul>
+        </div>
+        <div class="shot-rule">
+          <div class="shot-rule-label">Rule</div>
+          <p>If the shot isolates a specific object or text detail important to the story with no human focal point, it's an Insert. Use Composition: N/A.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAG 2 SECTION -->
+  <div class="section-label">Tag 2 — Composition</div>
+
+  <div class="tag-header">
+    <div>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;">
+        <span class="tag-number">Tag 2</span>
+        <h2>Composition</h2>
+      </div>
+      <p>Select the one tag that best describes how many subjects appear and their spatial relationship in the frame.</p>
+    </div>
+  </div>
+
+  <!-- Single -->
+  <div class="shot-card">
+    <div class="shot-card-inner">
+      <div class="shot-image">
+        <div class="shot-image-placeholder">
+          <div style="font-size:24px;font-weight:700;color:#1D1C1B;">SNGL</div>
+          <div>Reference image</div>
+        </div>
+      </div>
+      <div class="shot-content">
+        <div>
+          <div class="shot-header">
+            <span class="shot-code">Single</span>
+            <div>
+              <div class="shot-title">Single</div>
+              <div class="shot-subtitle">One subject, clean frame</div>
+            </div>
+          </div>
+          <p class="shot-desc">One subject clearly dominates the frame with no other subjects partially or fully visible.</p>
+          <ul class="shot-bullets">
+            <li>One person is the clear subject of the shot</li>
+            <li>No secondary figures visible at the frame edge</li>
+            <li>Most common composition in news interviews and field reporting</li>
+          </ul>
+        </div>
+        <div class="shot-rule">
+          <div class="shot-rule-label">Rule</div>
+          <p>If only one person is in the frame, it's a Single.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dirty Single -->
+  <div class="shot-card">
+    <div class="shot-card-inner">
+      <div class="shot-image">
+        <div class="shot-image-placeholder">
+          <div style="font-size:20px;font-weight:700;color:#1D1C1B;">DIRTY</div>
+          <div>Reference image</div>
+        </div>
+      </div>
+      <div class="shot-content">
+        <div>
+          <div class="shot-header">
+            <span class="shot-code">Dirty Single</span>
+            <div>
+              <div class="shot-title">Dirty Single</div>
+              <div class="shot-subtitle">Partial second subject at edge</div>
+            </div>
+          </div>
+          <p class="shot-desc">One subject clearly dominates, with a partial view of another person at the frame edge — typically a shoulder, arm, or back of a head.</p>
+          <ul class="shot-bullets">
+            <li>Secondary figure never fully present and doesn't draw equal attention — often out of focus or at the very edge</li>
+            <li>Common in field interviews (reporter's shoulder) or press conferences (adjacent speaker overlapping edge)</li>
+            <li>If the secondary subject grows to occupy equal visual weight, reclassify as Two-Shot</li>
+          </ul>
+        </div>
+        <div class="shot-rule">
+          <div class="shot-rule-label">Rule</div>
+          <p>If the frame is clearly focused on one subject and another person partially intrudes at the edge without drawing equal attention, it's a Dirty Single. It is NOT a Two-Shot unless the secondary figure reaches equal prominence.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OTS -->
+  <div class="shot-card">
+    <div class="shot-card-inner">
+      <div class="shot-image">
+        <div class="shot-image-placeholder">
+          <div style="font-size:28px;font-weight:700;color:#1D1C1B;">OTS</div>
+          <div>Reference image</div>
+        </div>
+      </div>
+      <div class="shot-content">
+        <div>
+          <div class="shot-header">
+            <span class="shot-code">OTS</span>
+            <div>
+              <div class="shot-title">OTS (Over-The-Shoulder)</div>
+              <div class="shot-subtitle">Foreground shoulder, focus on another</div>
+            </div>
+          </div>
+          <p class="shot-desc">Camera positioned behind one person's shoulder, looking toward another subject.</p>
+          <ul class="shot-bullets">
+            <li>One subject's shoulder and/or back occupies the foreground; a second subject is the visual focus</li>
+            <li>The foreground shoulder is intentional — it establishes spatial relationship between the two subjects</li>
+            <li>Common in conversation scenes and interview setups</li>
+          </ul>
+        </div>
+        <div class="shot-rule">
+          <div class="shot-rule-label">Rule</div>
+          <p>If you can see part of someone's shoulder or back in the foreground while the camera focuses on another subject, and this framing feels intentional, it's an OTS — not a Dirty Single or Two-Shot.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Two-Shot -->
+  <div class="shot-card">
+    <div class="shot-card-inner">
+      <div class="shot-image">
+        <div class="shot-image-placeholder">
+          <div style="font-size:22px;font-weight:700;color:#1D1C1B;">2-SHOT</div>
+          <div>Reference image</div>
+        </div>
+      </div>
+      <div class="shot-content">
+        <div>
+          <div class="shot-header">
+            <span class="shot-code">Two-Shot</span>
+            <div>
+              <div class="shot-title">Two-Shot</div>
+              <div class="shot-subtitle">Two subjects, equal weight</div>
+            </div>
+          </div>
+          <p class="shot-desc">Exactly two subjects are framed together with roughly equal visual weight.</p>
+          <ul class="shot-bullets">
+            <li>Both subjects are clearly visible and neither dominates</li>
+            <li>Both must be in the same physical space, captured by one undivided camera</li>
+            <li>Framing distance (Tag 1) is separate — focus only on equal prominence here</li>
+          </ul>
+        </div>
+        <div class="shot-rule">
+          <div class="shot-rule-label">Rule</div>
+          <p>If exactly two subjects share the frame with roughly equal prominence, it's a Two-Shot regardless of how much of their bodies are visible. If one subject clearly dominates, use Single or Dirty Single instead.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Three-Shot -->
+  <div class="shot-card">
+    <div class="shot-card-inner">
+      <div class="shot-image">
+        <div class="shot-image-placeholder">
+          <div style="font-size:20px;font-weight:700;color:#1D1C1B;">3-SHOT</div>
+          <div>Reference image</div>
+        </div>
+      </div>
+      <div class="shot-content">
+        <div>
+          <div class="shot-header">
+            <span class="shot-code">Three-Shot</span>
+            <div>
+              <div class="shot-title">Three-Shot</div>
+              <div class="shot-subtitle">Three subjects, equal weight</div>
+            </div>
+          </div>
+          <p class="shot-desc">Exactly three subjects are framed together with roughly equal visual weight.</p>
+          <ul class="shot-bullets">
+            <li>All three subjects are clearly visible and roughly balanced</li>
+            <li>Same equal-prominence rule as Two-Shot</li>
+            <li>If one subject clearly dominates the other two, reclassify using the dominant subject's composition</li>
+          </ul>
+        </div>
+        <div class="shot-rule">
+          <div class="shot-rule-label">Rule</div>
+          <p>If exactly three subjects share the frame with roughly equal prominence, it's a Three-Shot.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Group -->
+  <div class="shot-card">
+    <div class="shot-card-inner">
+      <div class="shot-image">
+        <div class="shot-image-placeholder">
+          <div style="font-size:24px;font-weight:700;color:#1D1C1B;">GROUP</div>
+          <div>Reference image</div>
+        </div>
+      </div>
+      <div class="shot-content">
+        <div>
+          <div class="shot-header">
+            <span class="shot-code">Group</span>
+            <div>
+              <div class="shot-title">Group</div>
+              <div class="shot-subtitle">Four or more subjects</div>
+            </div>
+          </div>
+          <p class="shot-desc">Four or more subjects are framed together with roughly equal visual weight.</p>
+          <ul class="shot-bullets">
+            <li>Four or more subjects clearly visible, none dominant over the others</li>
+            <li>All in the same physical space, captured by one undivided camera</li>
+            <li>If the environment becomes dominant, consider Master for Framing instead</li>
+          </ul>
+        </div>
+        <div class="shot-rule">
+          <div class="shot-rule-label">Rule</div>
+          <p>If four or more subjects share the frame with roughly equal prominence, it's a Group. If the shot feels more like an establishing wide shot of a location than a portrait of a group, use Master for Framing.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- N/A -->
+  <div class="shot-card">
+    <div class="shot-card-inner">
+      <div class="shot-image">
+        <div class="shot-image-placeholder">
+          <div style="font-size:28px;font-weight:700;color:#1D1C1B;">N/A</div>
+          <div>Reference image</div>
+        </div>
+      </div>
+      <div class="shot-content">
+        <div>
+          <div class="shot-header">
+            <span class="shot-code">N/A</span>
+            <div>
+              <div class="shot-title">N/A</div>
+              <div class="shot-subtitle">No human subjects to classify</div>
+            </div>
+          </div>
+          <p class="shot-desc">No human subjects are present, or the framing tag makes a composition tag irrelevant.</p>
+          <ul class="shot-bullets">
+            <li>Use when the shot is an Insert (object/detail only)</li>
+            <li>Use when the framing tag is POV</li>
+            <li>Use for pure scenery or environment with no identifiable human subjects</li>
+            <li>Use when framing is Master/Moving Master and subjects are entirely incidental</li>
+          </ul>
+        </div>
+        <div class="shot-rule">
+          <div class="shot-rule-label">Rule</div>
+          <p>If there are no human subjects to classify by their arrangement, use N/A.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXAMPLES / QUICK REFERENCE -->
+  <div class="section-label">Quick Reference — Common Tag Combinations</div>
+  <div class="comparison-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Scenario</th>
+          <th>Tag 1 — Framing</th>
+          <th>Tag 2 — Composition</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Anchor alone at desk, waist up</td>
+          <td><span class="code-pill">Medium</span></td>
+          <td><span class="code-pill">Single</span></td>
+        </tr>
+        <tr>
+          <td>Politician walking out of building, full body visible</td>
+          <td><span class="code-pill">Full</span></td>
+          <td><span class="code-pill">Single</span></td>
+        </tr>
+        <tr>
+          <td>Reporter interviewing subject, both waist up, equal weight</td>
+          <td><span class="code-pill">Medium</span></td>
+          <td><span class="code-pill">Two-Shot</span></td>
+        </tr>
+        <tr>
+          <td>Interview, subject in focus, reporter's shoulder at frame edge</td>
+          <td><span class="code-pill">Medium</span></td>
+          <td><span class="code-pill">Dirty Single</span></td>
+        </tr>
+        <tr>
+          <td>Camera over reporter's shoulder looking at interviewee</td>
+          <td><span class="code-pill">Medium</span></td>
+          <td><span class="code-pill">OTS</span></td>
+        </tr>
+        <tr>
+          <td>Press conference, 5 officials at podium, waist up</td>
+          <td><span class="code-pill">Medium</span></td>
+          <td><span class="code-pill">Group</span></td>
+        </tr>
+        <tr>
+          <td>Press conference, 5 officials, full bodies + room visible</td>
+          <td><span class="code-pill">Master</span></td>
+          <td><span class="code-pill">Group</span></td>
+        </tr>
+        <tr>
+          <td>Wide studio shot, anchor + giant monitor in background</td>
+          <td><span class="code-pill">Master</span></td>
+          <td><span class="code-pill">Single</span></td>
+        </tr>
+        <tr>
+          <td>Wrestler full body in ring, crowd and ring visible</td>
+          <td><span class="code-pill">Full</span></td>
+          <td><span class="code-pill">Single</span></td>
+        </tr>
+        <tr>
+          <td>Camera tracking reporter walking through flood scene</td>
+          <td><span class="code-pill">Moving Master</span></td>
+          <td><span class="code-pill">Single</span></td>
+        </tr>
+        <tr>
+          <td>Close-up of anchor's face during emotional moment</td>
+          <td><span class="code-pill">Close-Up</span></td>
+          <td><span class="code-pill">Single</span></td>
+        </tr>
+        <tr>
+          <td>Tight shot of hands signing a document</td>
+          <td><span class="code-pill">Extreme Close-Up</span></td>
+          <td><span class="code-pill">N/A</span></td>
+        </tr>
+        <tr>
+          <td>Shot of a court document or phone screen</td>
+          <td><span class="code-pill">Insert</span></td>
+          <td><span class="code-pill">N/A</span></td>
+        </tr>
+        <tr>
+          <td>Anchor + guest, both waist up, one clearly dominant</td>
+          <td><span class="code-pill">Medium</span></td>
+          <td><span class="code-pill">Dirty Single</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- EDGE CASES -->
+  <div class="section-label">Edge Cases — Common Confusion Points</div>
+  <div class="shot-card">
+    <div style="padding: 8px 32px;">
+      <div class="edge-case">
+        <h4>Full vs. Master</h4>
+        <p>Ask: "Is this shot showing what a person is doing, or showing the space they're in?" If a subject's full-body movement or posture is the clear reason for the shot, it's Full. If the environment, setting, or spatial relationships are equally important as any individual subject, it's Master. When the subject's feet are cut off, it cannot be Full regardless of how prominent they appear.</p>
+      </div>
+      <div class="edge-case">
+        <h4>Dirty Single vs. Two-Shot vs. OTS</h4>
+        <p>The test is equal visual weight. In a Dirty Single, one subject clearly dominates and the other is a partial intrusion at the edge — often blurred. In a Two-Shot, both subjects command roughly equal attention. In an OTS, one subject's shoulder is intentionally in the foreground as a compositional device — the framing is deliberately asymmetric to establish spatial context. When in doubt: if you'd crop out the secondary figure without losing the shot's meaning, it's a Dirty Single.</p>
+      </div>
+      <div class="edge-case">
+        <h4>Master + Group vs. Full + Group</h4>
+        <p>If four or more people are visible with their full bodies and the environment is equally prominent (e.g. a wide press conference room shot), use Master + Group. If four or more people are visible with full bodies but the group's collective action or presence — not the space — is the focal point, use Full + Group.</p>
+      </div>
+      <div class="edge-case">
+        <h4>Moving Master — when to end the segment</h4>
+        <p>If the camera movement causes framing to shift from a wide view to isolating a single subject (e.g. it zooms in mid-shot), end the Moving Master segment at the transition point and start a new segment with the appropriate framing tag. Do not classify the entire shot as Moving Master if part of it is a medium or close-up.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-left">TwelveLabs · Data &amp; Annotation Team</div>
+    <div class="footer-right">Shot Type Guideline · News &amp; Film · V1.0</div>
+  </div>
+
+</div>
+</body>
+</html>
